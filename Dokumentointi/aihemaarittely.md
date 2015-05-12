@@ -1,18 +1,21 @@
-*Aihe*: Laivanupotuspeli. Pelin tarkoituksena on saada vastustajan laivat tuhottua. Joko vuoropohjainen kaksinpeli tai konetta vastaan, jolloin kone ampuu sattumanvaraisesti.
+#*Aihe*: 
+##Laivanupotuspeli. 
+Pelin tarkoituksena on saada vastustajan laivat tuhottua. Joko vuoropohjainen kaksinpeli tai konetta vastaan, jolloin kone ampuu sattumanvaraisesti.
 
-Käyttäjät:
+##Käyttäjät:
 
 Pelaaja
 
-_Pelaajan toiminnot_:
+##Pelaajan toiminnot:
 
-Pelin aloitus:
+###Pelin aloitus:
 
 Pelaaja valitsee aloitusvalikosta uuden pelin.
 
-Pelin Pelaaminen:
+###Pelin Pelaaminen:
+
 Pelaaja valitsee kohdan taulukosta johon hän ampuu. 
 
-Pelin lopetus:
+###Pelin lopetus:
 
 Kun jomman kumman pelaajan kaikki laivat ovat tuhoutuneet tai kun pelaaja keskeyttää pelin manuaalisesti.
