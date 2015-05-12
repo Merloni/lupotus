@@ -1,11 +1,11 @@
 #Viikko 1:
 
-Ti 12.5.2015	
-*10.00-12.00
-*16.00-
+##Ti 12.5.2015	
+-10.00-12.00
+-16.00-
 
-*Aiheen suunnittelua, gitin kanssa säätöä.
-*Aihemäärittelyn ulkoasun hiomista.
+-Aiheen suunnittelua, gitin kanssa säätöä.
+-Aihemäärittelyn ulkoasun hiomista.
 
 
 #Viikko 2:
