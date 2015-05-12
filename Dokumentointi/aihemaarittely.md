@@ -4,11 +4,13 @@ Käyttäjät:
 
 Pelaaja
 
-Pelaajan toiminnot:
+_Pelaajan toiminnot_:
 
 Pelin aloitus:
 
 Pelin Pelaaminen:
+Pelaaja valitsee kohdan taulukosta johon hän ampuu. 
 
 Pelin lopetus:
+
 
