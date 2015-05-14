@@ -10,7 +10,7 @@ Aihemäärittelyn ulkoasun hiomista.
 ##To 14.5.2015
 22.00-23.00
 
-Viimeistelyt ja 
+Viimeistelyjä ja gitin kotikoneelle säätöä.
 
 
 #Viikko 2:
