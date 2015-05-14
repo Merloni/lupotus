@@ -8,7 +8,7 @@ Aiheen suunnittelua, gitin kanssa säätöä.
 Aihemäärittelyn ulkoasun hiomista.
 
 ##To 14.5.2015
-22.00-23.00
+22.00-23.30
 
 Viimeistelyjä ja gitin kotikoneelle säätöä.
 
