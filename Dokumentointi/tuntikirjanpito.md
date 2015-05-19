@@ -18,7 +18,7 @@ Viimeistelyjä ja gitin kotikoneelle säätöä.
 
 ##TI 19.5.2015
 
-- 13.00->
+- 13.00-17.30
 
 Uin tekoa ja suunnittelua.
 
