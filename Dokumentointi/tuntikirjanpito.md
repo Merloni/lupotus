@@ -8,13 +8,19 @@ Aiheen suunnittelua, gitin kanssa säätöä.
 Aihemäärittelyn ulkoasun hiomista.
 
 ##To 14.5.2015
-22.00-23.30
+- 22.00-23.30
 
 Viimeistelyjä ja gitin kotikoneelle säätöä.
 
 
 #Viikko 2:
 
+
+##TI 19.5.2015
+
+- 13.00->
+
+Uin tekoa ja suunnittelua.
 
 #Viikko 3:
 
