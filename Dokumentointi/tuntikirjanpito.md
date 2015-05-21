@@ -18,9 +18,15 @@ Viimeistelyjä ja gitin kotikoneelle säätöä.
 
 ##TI 19.5.2015
 
-- 13.00-17.30
+- 13.00-17.30->
 
 Uin tekoa ja suunnittelua.
+
+##TO 21.5.2015
+
+- 14.30-17.00
+
+UML-kaavion tekoa, testejä, luokkien järjestelyä.
 
 #Viikko 3:
 

@@ -25,6 +25,14 @@ public class Laiva {
         this.ammuttu = true;
     }
     
+    //Pelin alussa laivojen sijoittamiseen tarkoitetut metodit
+    public void setX(int x){
+        this.x = x;     
+    }
+    public void setY(int y){
+        this.y = y;
+    }
+    
     
     
 }

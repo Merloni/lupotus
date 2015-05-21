@@ -11,33 +11,19 @@ import java.util.List;
 public class Pelilauta {
     public static int[][] lauta;
     public static List<Laiva> laivat;
+    public static int koko;
     
     
     public Pelilauta(int koko){
-        lauta = new int[koko][koko];
-        laivat = new ArrayList();
+        this.lauta = new int[koko][koko];
+        this.laivat = new ArrayList();
+        this.koko = koko;
         
-    }
+    } 
     
-    public static void main(String args[]){
-        int xd = 10;
-        Pelilauta pelilauta = new Pelilauta(xd);
-        
-        Laiva laiva = new Laiva(1,1);
-        laivat.add(laiva);
-        
-        pelilauta.ammu(0,0);       
-        pelilauta.ammu(5,5);
-        pelilauta.ammu(xd-1,xd-1);
-        pelilauta.ammu(10-4,5-1);
-        
-        for (Laiva l : laivat) {
-            if (l.ammuttu){
-                lauta[l.x][l.y] = 2;
-            }
-        }
-        for (int i = 0; i < xd; i++) {
-            for (int j = 0; j < xd; j++) {
+    public void piirraValiaikainenLauta(int koko){
+        for (int i = 0; i < koko; i++) {
+            for (int j = 0; j < koko; j++) {
                 if (lauta[i][j] == 1){
                     System.out.print("X");
                 }
@@ -50,8 +36,15 @@ public class Pelilauta {
             }
             System.out.println("");
         }
+        
     }
     public void ammu(int x, int y){
+        for (Laiva l : laivat) {
+            if(l.x == x && l.y == y){
+                l.onAmmuttu();
+            }
+            
+        }
         if(lauta[x][y] == 1){
             System.out.println("Kohtaan " + x + " " + y + " on jo ammuttu");
         }
