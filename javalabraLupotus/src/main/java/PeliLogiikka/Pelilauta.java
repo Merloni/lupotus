@@ -1,6 +1,7 @@
 
 package PeliLogiikka;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class Pelilauta {
     
     public Pelilauta(int koko){
         lauta = new int[koko][koko];
+        laivat = new ArrayList();
         
     }
     
@@ -21,16 +23,18 @@ public class Pelilauta {
         int xd = 10;
         Pelilauta pelilauta = new Pelilauta(xd);
         
+        Laiva laiva = new Laiva(1,1);
+        laivat.add(laiva);
+        
         pelilauta.ammu(0,0);       
         pelilauta.ammu(5,5);
         pelilauta.ammu(xd-1,xd-1);
         pelilauta.ammu(10-4,5-1);
-        laivat.add(new Laiva(1,1));
+        
         for (Laiva l : laivat) {
             if (l.ammuttu){
                 lauta[l.x][l.y] = 2;
             }
-            
         }
         for (int i = 0; i < xd; i++) {
             for (int j = 0; j < xd; j++) {
