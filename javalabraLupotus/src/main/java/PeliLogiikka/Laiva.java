@@ -14,6 +14,8 @@ public class Laiva {
     public boolean ammuttu;
     public int x;
     public int y;
+    public int koko;
+    //väliaikainen tapa merkitä kokoa
     
     public Laiva(int x, int y){
         this.x = x;
@@ -31,6 +33,9 @@ public class Laiva {
     }
     public void setY(int y){
         this.y = y;
+    }
+    public void setKoko(int koko){
+        this.koko = koko;
     }
     
     

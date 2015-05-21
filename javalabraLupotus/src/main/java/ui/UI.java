@@ -33,13 +33,6 @@ public class UI implements Runnable{
         taulu.add(paneeli);
         
     }
-
-    public static void main(String args[]){
-        UI ui = new UI();
-        ui.run();
-        
-    }
-
     @Override
     public void run() {
         frame = new JFrame("Laivanupotus");

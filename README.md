@@ -1,3 +1,1 @@
 # lupotus
-
-ADASDASD TESTI123

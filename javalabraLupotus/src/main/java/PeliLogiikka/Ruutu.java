@@ -13,8 +13,7 @@ public class Ruutu {
     public Ruutu(int x, int y){
         this.x = x;
         this.y = y;
-        
-        
+              
     }
     public void asetaLaiva(Laiva l){
         this.onkoLaiva = true;

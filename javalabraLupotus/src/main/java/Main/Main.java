@@ -6,6 +6,7 @@
 package Main;
 
 import PeliLogiikka.Pelilauta;
+import PeliLogiikka.Ruutu;
 
 /**
  *
@@ -20,7 +21,8 @@ public class Main {
         pelilauta.ammu(2, 2);
         pelilauta.ammu(3, 3);
         pelilauta.ammu(4, 4);
-        pelilauta.piirraValiaikainenLauta(pelilauta.koko);
+        pelilauta.piirraValiaikainenLauta();
+        
         
         
         
