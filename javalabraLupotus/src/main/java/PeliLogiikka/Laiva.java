@@ -11,11 +11,11 @@ package PeliLogiikka;
  */
 public class Laiva {
     
-    public boolean ammuttu;
-    public int x;
-    public int y;
-    public int koko;
-    //väliaikainen tapa merkitä kokoa
+    private boolean ammuttu;
+    private int x;
+    private int y;
+    private int koko;
+    
     
     public Laiva(int x, int y){
         this.x = x;
@@ -36,6 +36,15 @@ public class Laiva {
     }
     public void setKoko(int koko){
         this.koko = koko;
+    }
+    public int getX(){
+        return this.x;
+    }
+    public int getY(){
+        return this.y;
+    }
+    public int getKoko(){
+        return this.koko;
     }
     
     

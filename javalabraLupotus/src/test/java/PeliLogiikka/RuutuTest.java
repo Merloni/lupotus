@@ -43,15 +43,15 @@ public class RuutuTest {
 
     @Test
     public void ruutuLaivaLisaysTest(){
-        assertEquals(ruutu.laiva,null);
+        assertEquals(ruutu.getLaiva(),null);
         ruutu.asetaLaiva(laiva);
-        assertEquals(ruutu.laiva,laiva);
+        assertEquals(ruutu.getLaiva(),laiva);
         
     }
     @Test
     public void ruutuOnkoAmmuttuTest(){
-        assertEquals(ruutu.onkoAmmuttu,false);
+        assertEquals(ruutu.onkoAmmuttu(),false);
         ruutu.onAmmuttu();
-        assertEquals(ruutu.onkoAmmuttu,true);
+        assertEquals(ruutu.onkoAmmuttu(),true);
     }
 }

@@ -41,16 +41,17 @@ public class LaivaTest {
 
     @Test
     public void laivaConstructorTest(){
-        assertEquals(laiva.x,1);
-        assertEquals(laiva.y,1);
+        assertEquals(laiva.getX(),1);
+        assertEquals(laiva.getY(),1);
         
     }
     @Test
     public void muutaLaivanKoordinaatitTest(){
-        assertEquals(laiva.x,1);
-        assertEquals(laiva.y,1);
+        assertEquals(laiva.getX(),1);
+        assertEquals(laiva.getY(),1);
         laiva.setX(2);
         laiva.setY(3);
-        assertEquals(laiva.x,2);
+        assertEquals(laiva.getX(),2);
+        assertEquals(laiva.getY(),3);
    }
 }

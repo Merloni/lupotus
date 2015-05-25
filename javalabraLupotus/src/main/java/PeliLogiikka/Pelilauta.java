@@ -9,10 +9,10 @@ import java.util.List;
  * @author tuosalme
  */
 public class Pelilauta {
-    public static int[][] lauta;
-    public static List<Laiva> laivat;
-    public static int koko;
-    public static List<Ruutu> ruudut = new ArrayList();
+    private static int[][] lauta;
+    private static List<Laiva> laivat;
+    private static int koko;
+    private static List<Ruutu> ruudut = new ArrayList();
     
     
     public Pelilauta(int koko){
@@ -29,8 +29,17 @@ public class Pelilauta {
             
         }
     }
-    public List tulostaRuudut(){
-        return ruudut;
+    public int[][] getLauta(){
+        return this.lauta;
+    }
+    public int getKoko(){
+        return this.koko;
+    }
+    public List getLaivat(){
+        return this.laivat;
+    }
+    public List getRuudut(){
+        return this.ruudut;
     }
     public void alustaRuudut(){
         for (int i = 0; i < this.koko; i++) {
@@ -59,7 +68,7 @@ public class Pelilauta {
     }
     public void ammu(int x, int y){
         for (Laiva l : laivat) {
-            if(l.x == x && l.y == y){
+            if(l.getX() == x && l.getY() == y){
                 l.onAmmuttu();
             }
             

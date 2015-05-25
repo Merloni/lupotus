@@ -26,6 +26,7 @@ Uin tekoa ja suunnittelua.
 
 - 14.30-17.00
 - 22.00-23.00
+
 UML-kaavion tekoa, testejä, luokkien järjestelyä.
 
 

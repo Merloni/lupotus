@@ -44,23 +44,23 @@ public class PelilautaTest {
     @Test
     public void pelilautaConstructorTest(){
         
-        for (int i = 0; i < lauta.koko; i++) {
-            for (int j = 0; j < lauta.koko; j++) {
-                assertEquals(lauta.lauta[i][j],0);               
+        for (int i = 0; i < lauta.getKoko(); i++) {
+            for (int j = 0; j < lauta.getKoko(); j++) {
+                assertEquals(lauta.getLauta()[i][j],0);               
             }          
         }
     }
     @Test
     public void pelilautaLisaaLaivaTest(){
-        assertEquals(lauta.laivat.size(),0);
+        assertEquals(lauta.getLaivat().size(),0);
         lauta.lisaaLaiva(laiva);
-        assertEquals(lauta.laivat.contains(laiva),true);
+        assertEquals(lauta.getLaivat().contains(laiva),true);
     }
     @Test
     public void alustaRuudutTest(){
-       assertEquals(lauta.ruudut.isEmpty(),true);
+       assertEquals(lauta.getRuudut().isEmpty(),true);
        lauta.alustaRuudut();
-       assertEquals(lauta.ruudut.isEmpty(),false);
+       assertEquals(lauta.getRuudut().isEmpty(),false);
        
    }
 }
