@@ -4,11 +4,11 @@ package PeliLogiikka;
 
 public class Ruutu {
     
-    private static int x;
-    private static int y;
-    private static boolean onkoLaiva = false;
-    private static boolean onkoAmmuttu = false;
-    private static Laiva laiva;
+    private int x;
+    private int y;
+    private boolean onkoLaiva = false;
+    private boolean ampumisTilanne = false;
+    private Laiva laiva;
     
     public Ruutu(int x, int y){
         this.x = x;
@@ -19,20 +19,24 @@ public class Ruutu {
         this.onkoLaiva = true;
         this.laiva = l;
     }
-    public void onAmmuttu(){
-        this.onkoAmmuttu = true;
+    public void ammu(){
+        this.ampumisTilanne = true;
     }
     public Laiva getLaiva(){
         return this.laiva;
     }
-    public boolean onkoAmmuttu(){
-        return onkoAmmuttu;
+    public boolean getAmmuttu(){
+        return ampumisTilanne;
     }
     public int getX(){
         return this.x;
     }
     public int getY(){
         return this.y;
+    }
+    @Override
+    public String toString(){
+        return this.x + ", " + this.y + ", " + this.ampumisTilanne;
     }
     
 }

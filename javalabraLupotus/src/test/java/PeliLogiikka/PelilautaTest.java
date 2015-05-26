@@ -5,6 +5,8 @@
  */
 package PeliLogiikka;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,7 +20,8 @@ import static org.junit.Assert.*;
  */
 public class PelilautaTest {
     Pelilauta lauta;
-    Laiva laiva;
+    Laiva ol;
+    List<Ruutu> osat;
     
     public PelilautaTest() {
     }
@@ -34,7 +37,12 @@ public class PelilautaTest {
     @Before
     public void setUp() {
         lauta = new Pelilauta(10);
-        laiva = new Laiva(1,1);
+        osat = new ArrayList();
+        osat.add(new Ruutu(1,1));
+        osat.add(new Ruutu(1,2));
+        
+        
+        ol = new Laiva(osat, lauta);
     }
     
     @After
@@ -42,25 +50,10 @@ public class PelilautaTest {
     }
 
     @Test
-    public void pelilautaConstructorTest(){
-        
-        for (int i = 0; i < lauta.getKoko(); i++) {
-            for (int j = 0; j < lauta.getKoko(); j++) {
-                assertEquals(lauta.getLauta()[i][j],0);               
-            }          
-        }
-    }
-    @Test
     public void pelilautaLisaaLaivaTest(){
         assertEquals(lauta.getLaivat().size(),0);
-        lauta.lisaaLaiva(laiva);
-        assertEquals(lauta.getLaivat().contains(laiva),true);
+        lauta.lisaaLaiva(ol);
+        assertEquals(lauta.getLaivat().contains(ol),true);
     }
-    @Test
-    public void alustaRuudutTest(){
-       assertEquals(lauta.getRuudut().isEmpty(),true);
-       lauta.alustaRuudut();
-       assertEquals(lauta.getRuudut().isEmpty(),false);
-       
-   }
+    
 }

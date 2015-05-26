@@ -34,7 +34,6 @@ public class RuutuTest {
     @Before
     public void setUp() {
         ruutu = new Ruutu(1,1);
-        laiva = new Laiva(1,1);
     }
     
     @After
@@ -42,16 +41,9 @@ public class RuutuTest {
     }
 
     @Test
-    public void ruutuLaivaLisaysTest(){
-        assertEquals(ruutu.getLaiva(),null);
-        ruutu.asetaLaiva(laiva);
-        assertEquals(ruutu.getLaiva(),laiva);
-        
-    }
-    @Test
     public void ruutuOnkoAmmuttuTest(){
-        assertEquals(ruutu.onkoAmmuttu(),false);
-        ruutu.onAmmuttu();
-        assertEquals(ruutu.onkoAmmuttu(),true);
+        assertEquals(ruutu.getAmmuttu(),false);
+        ruutu.ammu();
+        assertEquals(ruutu.getAmmuttu(),true);
     }
 }

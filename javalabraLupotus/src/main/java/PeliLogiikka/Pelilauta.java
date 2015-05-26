@@ -9,54 +9,40 @@ import java.util.List;
  * @author tuosalme
  */
 public class Pelilauta {
-    private static int[][] lauta;
-    private static List<Laiva> laivat;
-    private static int koko;
-    private static List<Ruutu> ruudut = new ArrayList();
+    private List<Laiva> laivat = new ArrayList();
+    private int koko;
+    private Ruutu[][] ruudut;
     
     
     public Pelilauta(int koko){
-        this.lauta = new int[koko][koko];
-        this.laivat = new ArrayList();
+        this.ruudut = new Ruutu[koko][koko];
         this.koko = koko;
         
         
     }
-    public void luoLaivat(){
-        Laiva[] laivat = {new Laiva(1,1), new Laiva(2,2),new Laiva(3,3)};
-        for (Laiva l : laivat) {
-            this.laivat.add(l);
-            
-        }
-    }
-    public int[][] getLauta(){
-        return this.lauta;
-    }
+
     public int getKoko(){
         return this.koko;
     }
     public List getLaivat(){
         return this.laivat;
     }
-    public List getRuudut(){
+    public Ruutu[][] getRuudut(){
         return this.ruudut;
     }
     public void alustaRuudut(){
         for (int i = 0; i < this.koko; i++) {
             for (int j = 0; j < this.koko; j++) {
                 Ruutu r = new Ruutu(i,j);
-                this.ruudut.add(r);
+                this.ruudut[i][j] = r;
             }        
         }
     }
     public void piirraValiaikainenLauta(){
         for (int i = 0; i < this.koko; i++) {
             for (int j = 0; j < this.koko; j++) {
-                if (lauta[i][j] == 1){
+                if(ruudut[i][j].getAmmuttu()){
                     System.out.print("X");
-                }
-                else if(lauta[i][j] == 2){
-                    System.out.println("O");
                 }
                 else{
                     System.out.print("~");
@@ -67,22 +53,31 @@ public class Pelilauta {
         
     }
     public void ammu(int x, int y){
-        for (Laiva l : laivat) {
-            if(l.getX() == x && l.getY() == y){
-                l.onAmmuttu();
+        System.out.println("Yritit ampua ruutuun: (" + x + ", " + y + ")" );
+        
+        if (ruudut[x][y].getAmmuttu()){
+            System.out.println("Olet jo ampunut ruutuun: (" + x + ", " + y + ")");
+        }
+        else{
+            ruudut[x][y].ammu();
+            System.out.println("Ammuit ruutuun: (" + x + ", " + y + ")");
+            
+            for (Laiva laiva : laivat) {
+                laiva.onkoUponnut();
+
+            
             }
             
         }
-        if(lauta[x][y] == 1){
-            System.out.println("Kohtaan " + x + " " + y + " on jo ammuttu");
-        }
-        else{
-            lauta[x][y] = 1;
-        }
+        
+        
+        
+        
+        
         
     }
-    public void lisaaLaiva(Laiva laiva){
-        laivat.add(laiva);
+    public void lisaaLaiva(Laiva ol){
+        laivat.add(ol);
     }
     
     

@@ -5,6 +5,8 @@
  */
 package PeliLogiikka;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,6 +20,8 @@ import static org.junit.Assert.*;
  */
 public class LaivaTest {
     Laiva laiva;
+    List<Ruutu> ruudut;
+    Pelilauta lauta;
     
     public LaivaTest() {
     }
@@ -32,26 +36,17 @@ public class LaivaTest {
     
     @Before
     public void setUp() {
-        laiva = new Laiva(1,1);
+        ruudut = new ArrayList();
+        Ruutu ruutu = new Ruutu(1,1);
+        Ruutu ruutu2 = new Ruutu(2,2);
+        ruudut.add(ruutu);
+        ruudut.add(ruutu2);
+        lauta = new Pelilauta(10);
+        laiva = new Laiva(ruudut,lauta);
     }
     
     @After
     public void tearDown() {
     }
 
-    @Test
-    public void laivaConstructorTest(){
-        assertEquals(laiva.getX(),1);
-        assertEquals(laiva.getY(),1);
-        
-    }
-    @Test
-    public void muutaLaivanKoordinaatitTest(){
-        assertEquals(laiva.getX(),1);
-        assertEquals(laiva.getY(),1);
-        laiva.setX(2);
-        laiva.setY(3);
-        assertEquals(laiva.getX(),2);
-        assertEquals(laiva.getY(),3);
-   }
 }

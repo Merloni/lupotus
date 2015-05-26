@@ -1,52 +1,52 @@
 
-
-
 package PeliLogiikka;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
-/**
- *
- * @author tuosalme
- */
+
 public class Laiva {
     
-    private boolean ammuttu;
-    private int x;
-    private int y;
-    private int koko;
+    private List<Ruutu> osat = new ArrayList();
+    private Pelilauta lauta;
+    private boolean onkoUponnut = false;
     
-    
-    public Laiva(int x, int y){
-        this.x = x;
-        this.y = y;
-        this.ammuttu = false;
+    public Laiva(List<Ruutu> ruudut, Pelilauta lauta){
+        this.osat = ruudut;
+        this.lauta = lauta;
         
-    } 
-    public void onAmmuttu(){
-        this.ammuttu = true;
     }
-    
-    //Pelin alussa laivojen sijoittamiseen tarkoitetut metodit
-    public void setX(int x){
-        this.x = x;     
+    public boolean onkoUponnut(){
+        /*Tarkistetaan onko kaikki osat laivasta uponneet, 
+        mikäli on muutetaan laivan tilaksi uponnut.
+        */
+        
+        for (Ruutu r : osat) {
+            
+                    
+            if(!lauta.getRuudut()[r.getX()][r.getY()].getAmmuttu())
+            {
+                
+                return false;
+            }
+            
+        }
+        System.out.println("Osui ja upposi");
+        this.onkoUponnut = true;
+        return true;
     }
-    public void setY(int y){
-        this.y = y;
+    public List getOsat(){
+        return this.osat;
     }
-    public void setKoko(int koko){
-        this.koko = koko;
+    @Override
+    public String toString(){
+        String s = "Kaikki laivan osien koordinaatit: ";
+        for (int i = 0; i < osat.size(); i++) {
+            s += "(" + osat.get(i).getX() + ", " + osat.get(i).getY() + ")";
+            
+        }
+        return s;
     }
-    public int getX(){
-        return this.x;
-    }
-    public int getY(){
-        return this.y;
-    }
-    public int getKoko(){
-        return this.koko;
-    }
-    
-    
     
 }

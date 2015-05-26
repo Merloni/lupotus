@@ -33,6 +33,19 @@ UML-kaavion tekoa, testejä, luokkien järjestelyä.
 
 #Viikko 3:
 
+##MA 25.5.2015
+
+- 12.00-13.00
+
+Testien säätöä + getterit, staticit -> ei static
+
+##TI 26.5.2015
+
+- 14.00-18.00
+
+Luokkien muutoksia, koodin selkeyttämistä, progressssss
+
+
 
 #Viikko 4:
 
