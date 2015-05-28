@@ -45,7 +45,12 @@ Testien säätöä + getterit, staticit -> ei static
 
 Luokkien muutoksia, koodin selkeyttämistä, progressssss
 
+##TO 28.5.2015
 
+- 17.00-18.20
+
+
+Testit parannetuille metodeille, uusi luokkakaavio, parantelua
 
 #Viikko 4:
 
