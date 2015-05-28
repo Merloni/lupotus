@@ -38,15 +38,32 @@ public class LaivaTest {
     public void setUp() {
         ruudut = new ArrayList();
         Ruutu ruutu = new Ruutu(1,1);
-        Ruutu ruutu2 = new Ruutu(2,2);
+        Ruutu ruutu2 = new Ruutu(2,1);
         ruudut.add(ruutu);
         ruudut.add(ruutu2);
         lauta = new Pelilauta(10);
+        lauta.alustaRuudut();
         laiva = new Laiva(ruudut,lauta);
     }
     
     @After
     public void tearDown() {
     }
-
+    @Test
+    public void onkoUponnutTest(){
+        assertEquals(laiva.onkoUponnut(),false);
+        lauta.ammu(1,1);
+        assertEquals(laiva.onkoUponnut(),false);
+        lauta.ammu(2,1);
+        assertEquals(laiva.onkoUponnut(),true);
+    }
+    @Test
+    public void toStringTest(){
+        assertEquals(laiva.toString(),"Kaikki laivan osien koordinaatit: (1, 1)(2, 1)");
+        
+    }
+    @Test
+    public void getOsatTest(){
+        assertEquals(laiva.getOsat().size(),2);
+    }
 }

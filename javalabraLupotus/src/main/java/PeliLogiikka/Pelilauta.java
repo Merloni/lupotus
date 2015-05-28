@@ -76,8 +76,8 @@ public class Pelilauta {
         
         
     }
-    public void lisaaLaiva(Laiva ol){
-        laivat.add(ol);
+    public void lisaaLaiva(Laiva laiva){
+        laivat.add(laiva);
     }
     
     

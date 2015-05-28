@@ -5,6 +5,7 @@
  */
 package PeliLogiikka;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,7 +20,7 @@ import static org.junit.Assert.*;
 public class RuutuTest {
     Ruutu ruutu;
     Laiva laiva;
-    
+    Pelilauta lauta;
     public RuutuTest() {
     }
     
@@ -33,7 +34,13 @@ public class RuutuTest {
     
     @Before
     public void setUp() {
+        lauta = new Pelilauta(10);
         ruutu = new Ruutu(1,1);
+        ArrayList<Ruutu> osat = new ArrayList();
+        osat.add(new Ruutu(1,1));
+        osat.add(new Ruutu(1,2));
+        laiva = new Laiva(osat,lauta);
+        
     }
     
     @After
@@ -45,5 +52,20 @@ public class RuutuTest {
         assertEquals(ruutu.getAmmuttu(),false);
         ruutu.ammu();
         assertEquals(ruutu.getAmmuttu(),true);
+    }
+    @Test
+    public void laivanLisaaminenRuutuunTest(){
+        assertEquals(ruutu.onkoLaiva(),false);
+        ruutu.asetaLaiva(laiva);
+        assertEquals(ruutu.onkoLaiva(),true);
+    }
+    @Test
+    public void toStringTest(){
+        assertEquals(ruutu.toString(),"1, 1, false");
+    }
+    @Test
+    public void getLaivaTest(){
+        ruutu.asetaLaiva(laiva);
+        assertEquals(ruutu.getLaiva().toString(),"Kaikki laivan osien koordinaatit: (1, 1)(1, 2)");
     }
 }

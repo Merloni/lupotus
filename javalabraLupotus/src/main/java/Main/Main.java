@@ -32,6 +32,7 @@ public class Main {
         lauta.ammu(1, 1);
         lauta.ammu(1, 2);
         lauta.ammu(1, 1);
+        System.out.println(lauta.getLaivat());
         
         
         
