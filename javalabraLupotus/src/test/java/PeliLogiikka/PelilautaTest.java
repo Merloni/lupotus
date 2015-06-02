@@ -7,6 +7,7 @@ package PeliLogiikka;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,6 +23,7 @@ public class PelilautaTest {
     Pelilauta lauta;
     Laiva ol;
     List<Ruutu> osat;
+    Scanner lukija;
     
     public PelilautaTest() {
     }
@@ -36,6 +38,7 @@ public class PelilautaTest {
     
     @Before
     public void setUp() {
+        lukija = new Scanner(System.in);
         lauta = new Pelilauta(10);
         osat = new ArrayList();
         osat.add(new Ruutu(1,1));
@@ -55,5 +58,6 @@ public class PelilautaTest {
         lauta.lisaaLaiva(ol);
         assertEquals(lauta.getLaivat().contains(ol),true);
     }
+    
     
 }

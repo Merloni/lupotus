@@ -34,6 +34,9 @@ public class Ruutu {
     public int getY(){
         return this.y;
     }
+    public boolean onkoLaiva(){
+        return this.onkoLaiva;
+    }
     @Override
     public String toString(){
         return this.x + ", " + this.y + ", " + this.ampumisTilanne;
