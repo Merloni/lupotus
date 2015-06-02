@@ -3,23 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ohjain;
+package ui;
 
-import ui.UI;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author tuosalme
  */
+public class LopetaListener implements ActionListener {
 
-
-public class Ohjain {
-    
-    public void run(){
-        
-        UI ui = new UI();
-        ui.run();
-        
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.exit(0);
     }
     
     
