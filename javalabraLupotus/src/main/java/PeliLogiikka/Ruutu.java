@@ -2,6 +2,14 @@
 package PeliLogiikka;
 
 
+/**
+ *
+ * Luokan ominaisuuksiin kuuluu tieto omasta sijainnista x- ja y-koordinaattien 
+ * avulla, tieto siitä onko ruutuun ammuttu vai ei ja onko ruudussa laiva.
+ * 
+ * @author tuosalme
+ */
+
 public class Ruutu {
     
     private int x;
@@ -19,6 +27,7 @@ public class Ruutu {
         this.onkoLaiva = true;
         this.laiva = l;
     }
+    
     public void ammu(){
         this.ampumisTilanne = true;
     }

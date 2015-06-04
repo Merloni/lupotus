@@ -60,6 +60,15 @@ Testit parannetuille metodeille, uusi luokkakaavio, parantelua
 
 Uin alottelua
 
+##TO 4.6.2015
+
+- 15.00-17.00
+- 19.30-20.30
+
+Javadoc, Ui säätö, testejä paremmaks, luokkamuokkauksia.
+
+Sekvenssikaaviot, pitreportti
+
 
 #Viikko 5:
 

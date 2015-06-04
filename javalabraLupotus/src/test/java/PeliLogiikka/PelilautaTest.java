@@ -23,7 +23,6 @@ public class PelilautaTest {
     Pelilauta lauta;
     Laiva ol;
     List<Ruutu> osat;
-    Scanner lukija;
     
     public PelilautaTest() {
     }
@@ -38,11 +37,12 @@ public class PelilautaTest {
     
     @Before
     public void setUp() {
-        lukija = new Scanner(System.in);
+
         lauta = new Pelilauta(10);
         osat = new ArrayList();
         osat.add(new Ruutu(1,1));
         osat.add(new Ruutu(1,2));
+        lauta.alustaRuudut();
         
         
         ol = new Laiva(osat, lauta);
@@ -51,12 +51,17 @@ public class PelilautaTest {
     @After
     public void tearDown() {
     }
-
     @Test
-    public void pelilautaLisaaLaivaTest(){
+    public void luoLaivat(){
         assertEquals(lauta.getLaivat().size(),0);
-        lauta.lisaaLaiva(ol);
-        assertEquals(lauta.getLaivat().contains(ol),true);
+        lauta.luoLaivat();
+        assertEquals(lauta.getLaivat().size(),5);
+    }
+    @Test
+    public void ammuTest(){
+        assertEquals(lauta.getRuudut()[0][0].getAmmuttu(),false);
+        lauta.ammu(0, 0);
+        assertEquals(lauta.getRuudut()[0][0].getAmmuttu(),true);
     }
     
     

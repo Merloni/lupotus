@@ -4,6 +4,12 @@ package PeliLogiikka;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luokkaan kuuluu laivan toiminnallisuudet, sen osat Ruutu -olioina ja tieto 
+ * siitä onko laiva uponnut vai ei. 
+ * 
+ * @author tuosalme
+ */
 
 
 public class Laiva {
@@ -12,14 +18,23 @@ public class Laiva {
     private Pelilauta lauta;
     private boolean onkoUponnut = false;
     
+    
+    /**
+     * 
+     * @param ruudut Lista ruuduista jotka kuuluvat laivaan
+     * @param lauta Pelialustana toimiva pohja
+     */
     public Laiva(List<Ruutu> ruudut, Pelilauta lauta){
         this.osat = ruudut;
         this.lauta = lauta;
         
     }
-        /*Tarkistetaan onko kaikki osat laivasta uponneet, 
-        mikäli on, muutetaan laivan tilaksi uponnut.
-        */
+    /**
+     * Metodi tarkistaa laivaan kuuluvan jokaisen ruutuolion ampumistilanteen.
+     * Mikäli jokainen ruutu on ammuttu metodi palauttaa true.
+     * 
+     * @return onko kaikki laivan osat uponneet
+     */
     public boolean onkoUponnut(){
         
         
@@ -33,7 +48,7 @@ public class Laiva {
             }
             
         }
-        System.out.println("Osui ja upposi");
+        //System.out.println("Osui ja upposi");
         this.onkoUponnut = true;
         return this.onkoUponnut;
     }

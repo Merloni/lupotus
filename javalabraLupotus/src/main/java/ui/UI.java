@@ -13,28 +13,46 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- *
+ * Tämä luokka hoitaa valikon ja pelitilanteen piirtämisen, sekä pelitilanteen 
+ * graafisen ulkoasun päivittämisen.
+ * 
+ * 
  * @author Tuomo
  */
 
 public class UI implements Runnable{
     
-    public static JFrame frame;
-    public static Container c;
+    private JFrame frame;
+    private Container c;
+    private static final float nappiKoko = 24f;
+    private static final int vali = 3;
     
     
     
-    public static void luoPeli(){
+    public void luoPeli(){
+        System.out.println("asd");
+        c.setLayout(new BorderLayout());
         
+        c.removeAll();
+        c.repaint();
+        
+        
+        c.validate();
+        frame.pack();
+        
+     
         
 
     } 
-    public static void luoValikko(){
+    public void paivitaPeli(){
+        
+    }
+    public JPanel luoValikko(){
         JButton aloitus = new JButton("Aloita Peli");
         JButton highscore = new JButton("Highscore");
         JButton lopetus = new JButton("Lopeta");
         
-        aloitus.addActionListener(new AloitaPeliListener());
+        aloitus.addActionListener(new AloitaPeliListener(this));
         lopetus.addActionListener(new LopetaListener());
         JPanel paneeli = new JPanel(); 
         
@@ -42,9 +60,10 @@ public class UI implements Runnable{
         paneeli.add(aloitus);
         paneeli.add(highscore);
         paneeli.add(lopetus);
-        frame.add(paneeli);
+        return paneeli;
         
     }
+    
     
     @Override
     public void run() {
@@ -52,9 +71,13 @@ public class UI implements Runnable{
         frame.setPreferredSize(new Dimension(800,700));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        c = frame.getContentPane();
+        
+        c.setLayout(new FlowLayout());
+        
+        c.add(luoValikko());
         
         
-        luoValikko();
         frame.pack();
         frame.setVisible(true);
         

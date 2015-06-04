@@ -41,11 +41,6 @@ public class Main {
     
     
     
-      
-      
-=======
-        System.out.println(lauta.getLaivat());
->>>>>>> 04f0820b806fe14ffe17db7089e1afdb348768f6
         
         
         

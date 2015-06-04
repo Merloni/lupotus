@@ -43,6 +43,7 @@
                      <targetClasses>
                         <param>PeliLogiikka.*</param>
                         <param>Ohjain.*</param>
+                        <param>Ui.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>PeliLogiikka.*</param>
