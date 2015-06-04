@@ -17,10 +17,11 @@ public class Laiva {
         this.lauta = lauta;
         
     }
-    public boolean onkoUponnut(){
         /*Tarkistetaan onko kaikki osat laivasta uponneet, 
-        mikäli on muutetaan laivan tilaksi uponnut.
+        mikäli on, muutetaan laivan tilaksi uponnut.
         */
+    public boolean onkoUponnut(){
+        
         
         for (Ruutu r : osat) {
             
@@ -34,7 +35,7 @@ public class Laiva {
         }
         System.out.println("Osui ja upposi");
         this.onkoUponnut = true;
-        return true;
+        return this.onkoUponnut;
     }
     public List getOsat(){
         return this.osat;

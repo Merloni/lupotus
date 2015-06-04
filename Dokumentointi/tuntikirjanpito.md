@@ -54,6 +54,12 @@ Testit parannetuille metodeille, uusi luokkakaavio, parantelua
 
 #Viikko 4:
 
+##TI 2.6.2015
+
+- 16.00-18.00
+
+Uin alottelua
+
 
 #Viikko 5:
 

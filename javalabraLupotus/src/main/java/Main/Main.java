@@ -5,12 +5,14 @@
  */
 package Main;
 
+import Ohjain.Ohjain;
 import PeliLogiikka.Laiva;
 import PeliLogiikka.Laiva;
 import PeliLogiikka.Pelilauta;
 import PeliLogiikka.Ruutu;
 import java.util.ArrayList;
 import java.util.List;
+import ui.UI;
 
 /**
  *
@@ -19,8 +21,8 @@ import java.util.List;
 public class Main {
     
     
-    public static void main(String args[]){
-        Pelilauta lauta = new Pelilauta(10);
+        public static void main(String args[]){
+    /*  Pelilauta lauta = new Pelilauta(10);
         lauta.alustaRuudut();
         List<Ruutu> osat = new ArrayList();
         osat.add(new Ruutu(1,1));
@@ -32,7 +34,18 @@ public class Main {
         lauta.ammu(1, 1);
         lauta.ammu(1, 2);
         lauta.ammu(1, 1);
+<<<<<<< HEAD
+    */
+        Ohjain ohjain = new Ohjain();
+        ohjain.run();
+    
+    
+    
+      
+      
+=======
         System.out.println(lauta.getLaivat());
+>>>>>>> 04f0820b806fe14ffe17db7089e1afdb348768f6
         
         
         

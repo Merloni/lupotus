@@ -1,18 +1,35 @@
 
 package Ohjain;
 
+<<<<<<< HEAD
+import ui.UI;
+=======
 import PeliLogiikka.Laiva;
 import PeliLogiikka.Pelilauta;
 import PeliLogiikka.Ruutu;
 import java.util.ArrayList;
 import java.util.List;
+>>>>>>> 04f0820b806fe14ffe17db7089e1afdb348768f6
 
 /**
  *
  * @author tuosalme
  */
+
+
 public class Ohjain {
     
+<<<<<<< HEAD
+    public void run(){
+        
+        UI ui = new UI();
+        ui.run();
+        
+    }
+    
+    
+    
+=======
     private Pelilauta lauta = new Pelilauta(10);
     public void luoLaivat(){
         List<Ruutu> ruudut = new ArrayList();
@@ -46,4 +63,5 @@ public class Ohjain {
         
     }
     
+>>>>>>> 04f0820b806fe14ffe17db7089e1afdb348768f6
 }
