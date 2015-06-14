@@ -74,3 +74,9 @@ Sekvenssikaaviot, pitreportti
 
 
 #Viikko 6:
+
+##SU 14.6.2015
+
+- 16.00->
+
+UI pls
