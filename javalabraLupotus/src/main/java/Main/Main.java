@@ -19,38 +19,25 @@ import ui.UI;
  * @author Tuomo
  */
 public class Main {
-    
-    
-        public static void main(String args[]){
-    /*  Pelilauta lauta = new Pelilauta(10);
-        lauta.alustaRuudut();
-        List<Ruutu> osat = new ArrayList();
-        osat.add(new Ruutu(1,1));
-        osat.add(new Ruutu(1,2));
-        Laiva laiva = new Laiva(osat,lauta);
-        lauta.lisaaLaiva(laiva);
+
+    public static void main(String args[]) {
+        /*  Pelilauta lauta = new Pelilauta(10);
+         lauta.alustaRuudut();
+         List<Ruutu> osat = new ArrayList();
+         osat.add(new Ruutu(1,1));
+         osat.add(new Ruutu(1,2));
+         Laiva laiva = new Laiva(osat,lauta);
+         lauta.lisaaLaiva(laiva);
         
-        System.out.println(laiva);
-        lauta.ammu(1, 1);
-        lauta.ammu(1, 2);
-        lauta.ammu(1, 1);
-<<<<<<< HEAD
-    */
+         System.out.println(laiva);
+         lauta.ammu(1, 1);
+         lauta.ammu(1, 2);
+         lauta.ammu(1, 1);
+         <<<<<<< HEAD
+         */
         Ohjain ohjain = new Ohjain();
         ohjain.run();
-    
-    
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
     }
-    
+
 }

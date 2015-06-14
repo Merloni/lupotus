@@ -77,6 +77,6 @@ Sekvenssikaaviot, pitreportti
 
 ##SU 14.6.2015
 
-- 16.00->
+- 16.00->19.30
 
 UI pls

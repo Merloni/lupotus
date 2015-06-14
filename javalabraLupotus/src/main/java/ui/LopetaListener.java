@@ -10,9 +10,9 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * Tämä luokka on aloitusvalikossa JButtoniin kiinnitettävä 
- * kuuntelija, joka sulkee ohjelman.
- * 
+ * Tämä luokka on aloitusvalikossa JButtoniin kiinnitettävä kuuntelija, joka
+ * sulkee ohjelman.
+ *
  * @author tuosalme
  */
 public class LopetaListener implements ActionListener {
@@ -21,7 +21,5 @@ public class LopetaListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.exit(0);
     }
-    
-    
-    
+
 }

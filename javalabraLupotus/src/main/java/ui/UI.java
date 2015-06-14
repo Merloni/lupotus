@@ -1,6 +1,4 @@
-
 package ui;
-
 
 import PeliLogiikka.Pelilauta;
 import PeliLogiikka.Ruutu;
@@ -23,15 +21,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * TÃ¤mÃ¤ luokka hoitaa valikon ja pelitilanteen piirtÃ¤misen, sekÃ¤ pelitilanteen 
- * graafisen ulkoasun pÃ¤ivittÃ¤misen.
- * 
- * 
+ * TÃ¤mÃ¤ luokka hoitaa valikon ja pelitilanteen piirtÃ¤misen, sekÃ¤
+ * pelitilanteen graafisen ulkoasun pÃ¤ivittÃ¤misen.
+ *
+ *
  * @author Tuomo
  */
+public class UI implements Runnable {
 
-public class UI implements Runnable{
-    
     private JFrame frame;
     private Container c;
     private JMenuItem m;
@@ -39,93 +36,84 @@ public class UI implements Runnable{
     private JTextField boksi;
     private JPanel peliPaneeli = new JPanel();
 
-    
-    
-    public JFrame getFrame(){
+    public JFrame getFrame() {
         return this.frame;
     }
-    public void paivita(){
-        
+
+    public void paivita() {
+        c.removeAll();
+        c.add(peliPaneeli);
+        c.repaint();
+
     }
-    public void luoPeli(){
+
+    public void luoPeli() {
         lauta.alustaRuudut();
-                   
+
         peliPaneeli.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        peliPaneeli.setLayout(new GridLayout(10,10));
-        
+        peliPaneeli.setLayout(new GridLayout(10, 10));
+
         for (int i = 0; i < lauta.getKoko(); i++) {
             for (int j = 0; j < lauta.getKoko(); j++) {
                 Ruutu r = lauta.getRuudut()[i][j];
                 r.setLabel("" + lauta.getRuudut()[i][j].getMerkki());
                 r.addActionListener(new RuutuListener(r, this, lauta));
                 peliPaneeli.add(r);
-                
+
             }
-            
+
         }
-        
+
         c.removeAll();
-        c.repaint();
         c.add(peliPaneeli);
-        
-        
-        
+        c.repaint();
+
         c.validate();
         frame.pack();
-        
-     
-        
 
     }
-    public JPanel luoSivuPalkki(){
+
+    public JPanel luoSivuPalkki() {
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(c,BoxLayout.Y_AXIS));
+        panel.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
         for (int i = 0; i < 10; i++) {
             panel.add(new JLabel("" + i));
         }
-        
-        
-        
+
         return panel;
     }
-    
-    
-    public JPanel luoValikko(){
+
+    public JPanel luoValikko() {
         JButton aloitus = new JButton("Aloita Peli");
         //JButton highscore = new JButton("Highscore");
         JButton lopetus = new JButton("Lopeta");
-        
+
         aloitus.addActionListener(new AloitaPeliListener(this));
         lopetus.addActionListener(new LopetaListener());
-        JPanel paneeli = new JPanel(); 
-        
+        JPanel paneeli = new JPanel();
+
         paneeli.setLayout(new BorderLayout());
-        paneeli.add(aloitus,BorderLayout.CENTER);
-        paneeli.add(lopetus,BorderLayout.SOUTH);
+        paneeli.add(aloitus, BorderLayout.CENTER);
+        paneeli.add(lopetus, BorderLayout.SOUTH);
         return paneeli;
-        
+
     }
-    
-    
+
     @Override
     public void run() {
         frame = new JFrame("Laivanupotus");
-        frame.setPreferredSize(new Dimension(800,700));
+        frame.setPreferredSize(new Dimension(800, 700));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         c = frame.getContentPane();
-        
+
         c.setLayout(new FlowLayout());
-        
+
         c.add(luoValikko());
-        
-        
+
         frame.pack();
         frame.setVisible(true);
-        
+
     }
-    
-    
-    
-    
+
 }

@@ -1,70 +1,82 @@
-
 package PeliLogiikka;
 
 import javax.swing.JButton;
 
-
 /**
  *
- * Luokan ominaisuuksiin kuuluu tieto omasta sijainnista x- ja y-koordinaattien 
+ * Luokan ominaisuuksiin kuuluu tieto omasta sijainnista x- ja y-koordinaattien
  * avulla, tieto siitä onko ruutuun ammuttu vai ei ja onko ruudussa laiva.
- * 
+ *
  * Ruutu toimii myös guihin piirretävänä JButton olentona.
- * 
+ *
  * @author tuosalme
  */
+public class Ruutu extends JButton {
 
-public class Ruutu extends JButton{
-    
     private int x;
     private int y;
     private boolean onkoLaiva = false;
     private boolean ampumisTilanne = false;
     private Laiva laiva;
     private char merkki = '~';
-    
-    public Ruutu(int x, int y){
+
+    public Ruutu(int x, int y) {
         this.x = x;
         this.y = y;
-              
+
     }
-    public void asetaLaiva(Laiva l){
+
+    public void asetaLaiva(Laiva l) {
         this.onkoLaiva = true;
         this.laiva = l;
     }
-    
-    public void ammu(){
+
+    public void ammu() {
         this.ampumisTilanne = true;
-        muutaMerkkia('X');
+        if (this.onkoLaiva) {
+            muutaMerkkia('X');
+        } else {
+
+            muutaMerkkia('O');
+        }
+
+        this.setText((this.merkki) + "");
     }
-    public Laiva getLaiva(){
+
+    public Laiva getLaiva() {
         return this.laiva;
     }
-    public boolean getAmmuttu(){
+
+    public boolean getAmmuttu() {
         return ampumisTilanne;
     }
+
     @Override
-    public int getX(){
+    public int getX() {
         return this.x;
     }
+
     @Override
-    public int getY(){
+    public int getY() {
         return this.y;
     }
-    public boolean onkoLaiva(){
+
+    public boolean onkoLaiva() {
         return this.onkoLaiva;
     }
-    public void muutaMerkkia(char c){
-        
+
+    public void muutaMerkkia(char c) {
+
         this.merkki = c;
     }
-    public char getMerkki(){
+
+    public char getMerkki() {
         return this.merkki;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return this.x + ", " + this.y + ", " + this.ampumisTilanne;
     }
-    
-    
+
 }

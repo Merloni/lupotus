@@ -1,6 +1,4 @@
-
 package Ohjain;
-
 
 import ui.UI;
 
@@ -10,27 +8,19 @@ import PeliLogiikka.Ruutu;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * 
- * 
+ *
+ *
  *
  * @author tuosalme
  */
-
-
 public class Ohjain {
 
-    public void run(){
-        
+    public void run() {
+
         UI ui = new UI();
         ui.run();
-        
-    }
-    
-    
-    
 
-    
-    
+    }
+
 }

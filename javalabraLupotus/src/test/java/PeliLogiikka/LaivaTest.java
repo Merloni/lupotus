@@ -50,14 +50,6 @@ public class LaivaTest {
     public void tearDown() {
     }
     @Test
-    public void onkoUponnutTest(){
-        assertEquals(laiva.onkoUponnut(),false);
-        lauta.ammu(1,1);
-        assertEquals(laiva.onkoUponnut(),false);
-        lauta.ammu(2,1);
-        assertEquals(laiva.onkoUponnut(),true);
-    }
-    @Test
     public void toStringTest(){
         assertEquals(laiva.toString(),"Kaikki laivan osien koordinaatit: (1, 1)(2, 1)");
         

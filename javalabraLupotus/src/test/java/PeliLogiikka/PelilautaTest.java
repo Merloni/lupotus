@@ -57,12 +57,7 @@ public class PelilautaTest {
         lauta.luoLaivat();
         assertEquals(lauta.getLaivat().size(),5);
     }
-    @Test
-    public void ammuTest(){
-        assertEquals(lauta.getRuudut()[0][0].getAmmuttu(),false);
-        lauta.ammu(0, 0);
-        assertEquals(lauta.getRuudut()[0][0].getAmmuttu(),true);
-    }
+    
     
     
 }
