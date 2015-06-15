@@ -56,7 +56,7 @@ public class RuutuTest {
     @Test
     public void laivanLisaaminenRuutuunTest(){
         assertEquals(ruutu.onkoLaiva(),false);
-        ruutu.asetaLaiva(laiva);
+        ruutu.asetaLaiva();
         assertEquals(ruutu.onkoLaiva(),true);
     }
     @Test
@@ -65,7 +65,7 @@ public class RuutuTest {
     }
     @Test
     public void getLaivaTest(){
-        ruutu.asetaLaiva(laiva);
+        ruutu.asetaLaiva();
         assertEquals(ruutu.getLaiva().toString(),"Kaikki laivan osien koordinaatit: (1, 1)(1, 2)");
     }
 }

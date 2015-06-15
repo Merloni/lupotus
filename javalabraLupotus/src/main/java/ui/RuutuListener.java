@@ -33,12 +33,12 @@ public class RuutuListener implements ActionListener {
             JOptionPane.showMessageDialog(ui.getFrame(), "Ammuit ruutuun; " + ruutu.getX() + ", " + ruutu.getY() + ", ei osumaa.");
             lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
             lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('O');
-            ui.paivita();
+
         } else {
             JOptionPane.showMessageDialog(ui.getFrame(), "Ammuit ruutuun; " + ruutu.getX() + ", " + ruutu.getY() + ", osui!");
             lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
             lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('X');
-            ui.paivita();
+
         }
 
     }

@@ -42,7 +42,7 @@ public class Laiva {
             }
 
         }
-        //System.out.println("Osui ja upposi");
+        
         this.onkoUponnut = true;
         return this.onkoUponnut;
     }

@@ -2,6 +2,7 @@ package PeliLogiikka;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Luokka pitää sisällään pelilaudan alustamiseen vaadittavan metodin,
@@ -61,37 +62,62 @@ public class Pelilauta {
      *
      */
     public void luoLaivat() {
-        List<Ruutu> ruudut = new ArrayList();
-        ruudut.add(new Ruutu(0, 0));
-        Laiva l = new Laiva(ruudut, this);
+        List<Ruutu> osat = new ArrayList();
+        List<Ruutu> kaikkiOsat = new ArrayList();
+        osat.add(ruudut[0][0]);
+        kaikkiOsat.add(ruudut[0][0]);
+        Laiva l = new Laiva(osat, this);
         this.laivat.add(l);
-        ruudut = new ArrayList();
-        ruudut.add(new Ruutu(1, 0));
-        ruudut.add(new Ruutu(1, 1));
-        Laiva la = new Laiva(ruudut, this);
+        osat = new ArrayList();
+        osat.add(ruudut[1][0]);
+        osat.add(ruudut[1][1]);
+        kaikkiOsat.add(ruudut[1][0]);
+        kaikkiOsat.add(ruudut[1][1]);
+        Laiva la = new Laiva(osat, this);
         this.laivat.add(la);
-        ruudut = new ArrayList();
-        ruudut.add(new Ruutu(2, 0));
-        ruudut.add(new Ruutu(2, 1));
-        ruudut.add(new Ruutu(2, 2));
-        Laiva lai = new Laiva(ruudut, this);
+        osat = new ArrayList();
+        osat.add(ruudut[2][0]);
+        osat.add(ruudut[2][1]);
+        osat.add(ruudut[2][2]);
+        kaikkiOsat.add(ruudut[2][0]);
+        kaikkiOsat.add(ruudut[2][1]);
+        kaikkiOsat.add(ruudut[2][2]);
+        Laiva lai = new Laiva(osat, this);
         this.laivat.add(lai);
-        ruudut = new ArrayList();
-        ruudut.add(new Ruutu(3, 0));
-        ruudut.add(new Ruutu(3, 1));
-        ruudut.add(new Ruutu(3, 2));
-        ruudut.add(new Ruutu(3, 3));
-        Laiva laiv = new Laiva(ruudut, this);
+        osat = new ArrayList();
+        osat.add(ruudut[3][0]);
+        osat.add(ruudut[3][1]);
+        osat.add(ruudut[3][2]);
+        osat.add(ruudut[3][3]);
+        kaikkiOsat.add(ruudut[3][0]);
+        kaikkiOsat.add(ruudut[3][1]);
+        kaikkiOsat.add(ruudut[3][2]);
+        kaikkiOsat.add(ruudut[3][3]);
+        Laiva laiv = new Laiva(osat, this);
         this.laivat.add(laiv);
-        ruudut = new ArrayList();
-        ruudut.add(new Ruutu(4, 0));
-        ruudut.add(new Ruutu(4, 1));
-        ruudut.add(new Ruutu(4, 2));
-        ruudut.add(new Ruutu(4, 3));
-        ruudut.add(new Ruutu(4, 4));
-        Laiva laiva = new Laiva(ruudut, this);
+        osat = new ArrayList();
+        osat.add(ruudut[4][0]);
+        osat.add(ruudut[4][1]);
+        osat.add(ruudut[4][2]);
+        osat.add(ruudut[4][3]);
+        osat.add(ruudut[4][4]);
+        kaikkiOsat.add(ruudut[4][0]);
+        kaikkiOsat.add(ruudut[4][1]);
+        kaikkiOsat.add(ruudut[4][2]);
+        kaikkiOsat.add(ruudut[4][3]);
+        kaikkiOsat.add(ruudut[4][4]);
+        Laiva laiva = new Laiva(osat, this);
         this.laivat.add(laiva);
+        for (Ruutu r : kaikkiOsat) {
+            ruudut[r.getX()][r.getY()].asetaLaiva();
+        }
 
     }
+    public void luoPeliTilanne(){
+        this.alustaRuudut();
+        this.luoLaivat();
+        
+    }
+    
 
 }
