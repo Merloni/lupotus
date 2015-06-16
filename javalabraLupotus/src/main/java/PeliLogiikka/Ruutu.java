@@ -26,8 +26,9 @@ public class Ruutu extends JButton {
 
     }
 
-    public void asetaLaiva() {
+    public void asetaLaiva(Laiva l) {
         this.onkoLaiva = true;
+        this.laiva = l;
     }
 
     public void ammu() {

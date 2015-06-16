@@ -46,16 +46,9 @@ public class UI implements Runnable {
         peliPaneeli.add(luoPeliPainikkeet(), BorderLayout.CENTER);
         peliPaneeli.add(luoYlapalkki(), BorderLayout.NORTH);
 
-        konePaneeli.setLayout(new BorderLayout());
-        konePaneeli.add(luoSivupalkki(), BorderLayout.EAST);
-        konePaneeli.add(luoKonePainikkeet(), BorderLayout.CENTER);
-        konePaneeli.add(luoYlapalkki(), BorderLayout.NORTH);
-        
-        
-
         c.removeAll();
         c.repaint();
-        c.setLayout(new BorderLayout());
+        c.setLayout(new FlowLayout());
         c.add(peliPaneeli);
 
         c.validate();
@@ -65,42 +58,25 @@ public class UI implements Runnable {
 
     public JPanel luoPeliPainikkeet() {
         JPanel painikkeet = new JPanel();
-        painikkeet.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         painikkeet.setLayout(new GridLayout(10, 10));
         for (int i = 0; i < lauta.getKoko(); i++) {
             for (int j = 0; j < lauta.getKoko(); j++) {
-                Ruutu r = lauta.getRuudut()[i][j];
-                r.setLabel("" + lauta.getRuudut()[i][j].getMerkki());
-                r.addActionListener(new RuutuListener(r, this, lauta));
+                JButton button = (JButton) lauta.getRuudut()[j][i];
+                button.setLabel("" + lauta.getRuudut()[j][i].getMerkki());
+                button.addActionListener(new RuutuListener(lauta.getRuudut()[j][i], this, lauta));
 
-                painikkeet.add(r);
+                painikkeet.add(button);
 
             }
 
         }
+
         return painikkeet;
     }
-    
-    public JPanel luoKonePainikkeet() {
-        JPanel kohdat = new JPanel();
-        kohdat.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        kohdat.setLayout(new GridLayout(10, 10));
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                Ruutu r = new Ruutu(i,j);
-                r.setLabel("~");
-                kohdat.add(r);
-            }
-        }
-        
-        return new JPanel();
-    }
-
-    
 
     public JPanel luoYlapalkki() {
         JPanel ylaPaneeli = new JPanel();
-        ylaPaneeli.setLayout(new GridLayout(0, 10));
+        ylaPaneeli.setLayout(new GridLayout(1, 10));
         char aakkoset[] = "ABCDEFGHIJ".toCharArray();
         for (int i = 0; i < 10; i++) {
             ylaPaneeli.add(new JLabel(Character.toString(aakkoset[i])), BorderLayout.NORTH);

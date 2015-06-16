@@ -42,7 +42,7 @@ public class Laiva {
             }
 
         }
-        
+
         this.onkoUponnut = true;
         return this.onkoUponnut;
     }
@@ -59,6 +59,10 @@ public class Laiva {
 
         }
         return s;
+    }
+
+    public void lisaaOsa(Ruutu r) {
+        this.osat.add(r);
     }
 
 }

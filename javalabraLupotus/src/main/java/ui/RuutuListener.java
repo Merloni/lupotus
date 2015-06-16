@@ -1,5 +1,6 @@
 package ui;
 
+import PeliLogiikka.Laiva;
 import PeliLogiikka.Pelilauta;
 import PeliLogiikka.Ruutu;
 import java.awt.event.ActionEvent;
@@ -25,20 +26,37 @@ public class RuutuListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        char aakkoset[] = "ABCDEFGHIJ".toCharArray();
 
         if (this.ruutu.getAmmuttu()) {
             JOptionPane.showMessageDialog(ui.getFrame(), "Ruutuun on jo ammuttu, yritä uudestaan.");
         } else if (!this.ruutu.onkoLaiva()) {
 
-            JOptionPane.showMessageDialog(ui.getFrame(), "Ammuit ruutuun; " + ruutu.getX() + ", " + ruutu.getY() + ", ei osumaa.");
+            JOptionPane.showMessageDialog(ui.getFrame(), "Ammuit ruutuun " + Character.toString(aakkoset[ruutu.getX()]) + ruutu.getY() + ", ei osumaa.");
             lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
             lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('O');
 
         } else {
-            JOptionPane.showMessageDialog(ui.getFrame(), "Ammuit ruutuun; " + ruutu.getX() + ", " + ruutu.getY() + ", osui!");
+
+            String teksti = "Ammuit ruutuun " + Character.toString(aakkoset[ruutu.getX()]) + ruutu.getY();
             lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
             lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('X');
+            if (this.ruutu.getLaiva().onkoUponnut()) {
+                teksti += ", osui ja upposi!";
+                JOptionPane.showMessageDialog(ui.getFrame(), teksti);
+            } else {
+                teksti += ", osui!";
+                JOptionPane.showMessageDialog(ui.getFrame(), teksti);
+            }
 
+            if (lauta.onkoKaikkiUponneet()) {
+                int result = JOptionPane.showConfirmDialog(ui.getFrame(),
+                        "Onneksi olkoon, voitit pelin!",
+                        "Voitit pelin!", JOptionPane.DEFAULT_OPTION);
+                if (result == 0 || result == 1) {
+                    System.exit(0);
+                }
+            }
         }
 
     }
