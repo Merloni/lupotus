@@ -46,14 +46,17 @@ public class UI implements Runnable {
         peliPaneeli.add(luoPeliPainikkeet(), BorderLayout.CENTER);
         peliPaneeli.add(luoYlapalkki(), BorderLayout.NORTH);
 
+        muutaTilaa(peliPaneeli);
+
+    }
+    public void muutaTilaa(JPanel panel){
         c.removeAll();
         c.repaint();
         c.setLayout(new FlowLayout());
-        c.add(peliPaneeli);
-
+        c.add(panel);
+        
         c.validate();
         frame.pack();
-
     }
 
     public JPanel luoPeliPainikkeet() {
@@ -61,12 +64,11 @@ public class UI implements Runnable {
         painikkeet.setLayout(new GridLayout(10, 10));
         for (int i = 0; i < lauta.getKoko(); i++) {
             for (int j = 0; j < lauta.getKoko(); j++) {
-                JButton button = (JButton) lauta.getRuudut()[j][i];
-                button.setLabel("" + lauta.getRuudut()[j][i].getMerkki());
-                button.addActionListener(new RuutuListener(lauta.getRuudut()[j][i], this, lauta));
 
-                painikkeet.add(button);
+                JButton nappi = new JButton("" + lauta.getRuudut()[j][i].getMerkki());
+                nappi.addActionListener(new RuutuListener(lauta.getRuudut()[j][i], this, lauta, nappi));
 
+                painikkeet.add(nappi);
             }
 
         }

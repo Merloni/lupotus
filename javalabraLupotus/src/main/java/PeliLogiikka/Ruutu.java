@@ -11,7 +11,7 @@ import javax.swing.JButton;
  *
  * @author tuosalme
  */
-public class Ruutu extends JButton {
+public class Ruutu {
 
     private int x;
     private int y;
@@ -26,11 +26,22 @@ public class Ruutu extends JButton {
 
     }
 
+    /**
+     * Asettaa ruudun laivatilanteen todeksi sekä kertaa oliolle mikä laiva
+     * ruudussa on.
+     *
+     * @param l ruutuun asetettava laiva
+     */
     public void asetaLaiva(Laiva l) {
         this.onkoLaiva = true;
         this.laiva = l;
     }
 
+    /**
+     * Asettaa ruudun ammutuksi ja muuttaa sen merkkiä. Merkkiä ei tällä
+     * hetkellä käytetä vaan JButton muuttaa ampumistilanteessa oman labelinsa
+     * tarvittavaksi merkiksi.
+     */
     public void ammu() {
         this.ampumisTilanne = true;
         if (this.onkoLaiva) {
@@ -40,7 +51,6 @@ public class Ruutu extends JButton {
             muutaMerkkia('O');
         }
 
-        this.setText((this.merkki) + "");
     }
 
     public Laiva getLaiva() {
@@ -51,12 +61,10 @@ public class Ruutu extends JButton {
         return ampumisTilanne;
     }
 
-    @Override
     public int getX() {
         return this.x;
     }
 
-    @Override
     public int getY() {
         return this.y;
     }

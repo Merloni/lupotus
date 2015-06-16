@@ -34,7 +34,7 @@ public class Pelilauta {
 
     /**
      * Metodi tarkistaa kaikkien pelilaudalla olevien laivojen uppoamistilan.
-     * 
+     *
      * @return palautetaan true mikäli kaikki laivat ovat uponneet ja false
      * mikäli yksikin on vielä "ehjä"
      */
@@ -76,6 +76,8 @@ public class Pelilauta {
      * määrättyihin koordinaatteihin.
      *
      * Metodia ei tulla tällaisenaan käyttämään lopullisessa versiossa.
+     * Tarkoituksena poistaa toisto ja asettaa laivat sattumanvaraisille
+     * paikoille.
      */
     public void luoLaivat() {
         List<Ruutu> osat = new ArrayList();

@@ -42,11 +42,11 @@
                 <configuration>
                      <targetClasses>
                         <param>PeliLogiikka.*</param>
-                        <param>Ohjain.*</param>
-                        <param>Ui.*</param>
+                        <param>ui.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>PeliLogiikka.*</param>
+                        <param>ui.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

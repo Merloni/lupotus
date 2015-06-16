@@ -61,6 +61,11 @@ public class Laiva {
         return s;
     }
 
+    /**
+     * Yksittäisen ruudun lisääminen laivan osiin.
+     *
+     * @param r ruutu joka lisätään.
+     */
     public void lisaaOsa(Ruutu r) {
         this.osat.add(r);
     }
