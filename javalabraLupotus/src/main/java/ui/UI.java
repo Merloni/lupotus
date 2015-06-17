@@ -1,5 +1,8 @@
 package ui;
 
+import Kuuntelijat.RuutuListener;
+import Kuuntelijat.LopetaListener;
+import Kuuntelijat.AloitaPeliListener;
 import PeliLogiikka.Pelilauta;
 import PeliLogiikka.Ruutu;
 import java.awt.BorderLayout;
@@ -49,12 +52,13 @@ public class UI implements Runnable {
         muutaTilaa(peliPaneeli);
 
     }
-    public void muutaTilaa(JPanel panel){
+
+    public void muutaTilaa(JPanel panel) {
         c.removeAll();
         c.repaint();
         c.setLayout(new FlowLayout());
         c.add(panel);
-        
+
         c.validate();
         frame.pack();
     }

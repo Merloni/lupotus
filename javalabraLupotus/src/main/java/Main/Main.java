@@ -5,13 +5,8 @@
  */
 package Main;
 
-
-import PeliLogiikka.Laiva;
-import PeliLogiikka.Laiva;
 import PeliLogiikka.Pelilauta;
 import PeliLogiikka.Ruutu;
-import java.util.ArrayList;
-import java.util.List;
 import ui.UI;
 
 /**
@@ -21,9 +16,11 @@ import ui.UI;
 public class Main {
 
     public static void main(String args[]) {
-        
+
         UI ui = new UI();
         ui.run();
+        
+        
 
     }
 

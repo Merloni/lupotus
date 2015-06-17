@@ -1,13 +1,15 @@
-package ui;
+package Kuuntelijat;
 
 import PeliLogiikka.Laiva;
 import PeliLogiikka.Pelilauta;
 import PeliLogiikka.Ruutu;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import ui.UI;
 
 /**
  *
@@ -50,13 +52,12 @@ public class RuutuListener implements ActionListener {
 
             osuma();
 
-            voititkoPelin();
         }
 
     }
 
     /**
-     * Mikäli klikattussa ruudussa ei ole, laivaa palautetaan tämä metodi.
+     * Mikäli klikattussa ruudussa ei ole, laivaa kutsutaan tämä metodi.
      */
     public void eiOsumaa() {
         char aakkoset[] = "ABCDEFGHIJ".toCharArray();
@@ -68,7 +69,7 @@ public class RuutuListener implements ActionListener {
     }
 
     /**
-     * Mikäli klikatussa ruudussa on laiva, palautetaan tämä metodi.
+     * Mikäli klikatussa ruudussa on laiva, kutsutaan tämä metodi.
      */
     public void osuma() {
         char aakkoset[] = "ABCDEFGHIJ".toCharArray();
@@ -76,14 +77,23 @@ public class RuutuListener implements ActionListener {
         lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
         lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('X');
         this.button.setLabel("X");
+        
         if (this.ruutu.getLaiva().onkoUponnut()) {
             teksti += ", osui ja upposi!";
             JOptionPane.showMessageDialog(ui.getFrame(), teksti);
+            this.button.setBackground(Color.red);
+            for (int i = 0; i < lauta.getLaivat().size(); i++) {
+                System.out.println(lauta.getLaivat().get(i));
+                
+            }
+            System.out.println("");
+            
         } else {
             teksti += ", osui!";
             JOptionPane.showMessageDialog(ui.getFrame(), teksti);
+            this.button.setBackground(Color.red);
         }
-
+        voititkoPelin();
     }
 
     /**

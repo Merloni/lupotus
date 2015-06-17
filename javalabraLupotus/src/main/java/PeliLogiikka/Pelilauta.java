@@ -61,6 +61,7 @@ public class Pelilauta {
 
     /**
      * Alustaa jokaisen ruudun koordinaatit oikein.
+     *
      */
     public void alustaRuudut() {
         for (int i = 0; i < this.koko; i++) {
@@ -80,56 +81,13 @@ public class Pelilauta {
      * paikoille.
      */
     public void luoLaivat() {
-        List<Ruutu> osat = new ArrayList();
-        osat.add(ruudut[0][0]);
-        Laiva l = new Laiva(osat, this);
-        for (Ruutu o : osat) {
-            ruudut[o.getX()][o.getY()].asetaLaiva(l);
 
-        }
-        this.laivat.add(l);
-        osat = new ArrayList();
-        osat.add(ruudut[1][0]);
-        osat.add(ruudut[1][1]);
-        Laiva la = new Laiva(osat, this);
-        for (Ruutu o : osat) {
-            ruudut[o.getX()][o.getY()].asetaLaiva(la);
-
-        }
-        this.laivat.add(la);
-        osat = new ArrayList();
-        osat.add(ruudut[2][0]);
-        osat.add(ruudut[2][1]);
-        osat.add(ruudut[2][2]);
-        Laiva lai = new Laiva(osat, this);
-        for (Ruutu o : osat) {
-            ruudut[o.getX()][o.getY()].asetaLaiva(lai);
-
-        }
-        this.laivat.add(lai);
-        osat = new ArrayList();
-        osat.add(ruudut[3][0]);
-        osat.add(ruudut[3][1]);
-        osat.add(ruudut[3][2]);
-        osat.add(ruudut[3][3]);
-        Laiva laiv = new Laiva(osat, this);
-        for (Ruutu o : osat) {
-            ruudut[o.getX()][o.getY()].asetaLaiva(laiv);
-
-        }
-        this.laivat.add(laiv);
-        osat = new ArrayList();
-        osat.add(ruudut[4][0]);
-        osat.add(ruudut[4][1]);
-        osat.add(ruudut[4][2]);
-        osat.add(ruudut[4][3]);
-        osat.add(ruudut[4][4]);
-        Laiva laiva = new Laiva(osat, this);
-        for (Ruutu o : osat) {
-            ruudut[o.getX()][o.getY()].asetaLaiva(laiva);
-
-        }
-        this.laivat.add(laiva);
+        luoLaiva(2);
+        luoLaiva(2);
+        luoLaiva(3);
+        luoLaiva(3);
+        luoLaiva(4);
+        luoLaiva(5);
 
     }
 
@@ -145,16 +103,106 @@ public class Pelilauta {
 
     /**
      * Metodi yksittaisen laivan luomiseen ja sen sijoittamiseen
-     * sattumanvaraiselle paikalle pelilaudalla. Vielä vaiheessa
+     * sattumanvaraiselle paikalle pelilaudalla.
      *
-     * @param i asetettavan laivan koko
+     * @param i
+     * @return palauttaa laivan
      */
     public Laiva luoLaiva(int i) {
         ArrayList<Ruutu> osat = new ArrayList();
-        Random r = new Random();
-        Laiva l = new Laiva(osat, this);
+        Laiva laiva = new Laiva(osat, this);
+        Random arpoja = new Random();
+        int suunta = arpoja.nextInt(2);
 
-        return l;
+        int paikka = arpoja.nextInt(9 - i);
+        int tiedettyPaikka = arpoja.nextInt(9);
+        for (int j = 0; j < i; j++) {
+            if (suunta == 1) {
+
+                Ruutu r = new Ruutu(paikka + j, tiedettyPaikka);
+                if (!tarkistaOnkoRuutuSallittu(r)) {
+                    luoLaiva(i);
+                    laiva = new Laiva(new ArrayList(), this);
+                    osat = new ArrayList();
+                    break;
+                } else {
+
+                    osat.add(r);
+                }
+            } else {
+
+                Ruutu r = new Ruutu(tiedettyPaikka, paikka + j);
+                if (!tarkistaOnkoRuutuSallittu(r)) {
+                    luoLaiva(i);
+                    laiva = new Laiva(new ArrayList(), this);
+                    osat = new ArrayList();
+                    break;
+
+                } else {
+
+                    osat.add(r);
+
+                }
+            }
+
+        }
+
+        for (Ruutu o : osat) {
+            ruudut[o.getX()][o.getY()].asetaLaiva(laiva);
+
+        }
+        if (laiva.getOsat().size() != 0) {
+            this.laivat.add(laiva);
+        }
+
+        return laiva;
     }
 
+    public boolean tarkistaOnkoRuutuSallittu(Ruutu r) {
+
+        if (ruudut[r.getX()][r.getY()].onkoLaiva()) {
+            return false;
+        } else if (r.getX() == 0 && r.getY() == 0) {
+            if (ruudut[r.getX() + 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() + 1].onkoLaiva()) {
+                return false;
+            }
+
+        } else if (r.getX() == 0 && r.getY() == 9) {
+            if (ruudut[r.getX() + 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() - 1].onkoLaiva()) {
+                return false;
+            }
+
+        } else if (r.getX() == 0 && (r.getY() < 9 && r.getY() > 0)) {
+            if (ruudut[r.getX() + 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() + 1].onkoLaiva() || ruudut[r.getX()][r.getY() - 1].onkoLaiva()) {
+                return false;
+            }
+        } else if (r.getX() == 9 && r.getY() == 9) {
+            if (ruudut[r.getX() - 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() - 1].onkoLaiva()) {
+                return false;
+            }
+        } else if (r.getX() == 9 && r.getY() == 0) {
+            if (ruudut[r.getX() - 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() - 1].onkoLaiva()) {
+                return false;
+            }
+        } else if (r.getX() == 9 && (r.getY() < 9 || r.getY() > 0)) {
+            if (ruudut[r.getX() - 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() - 1].onkoLaiva() || ruudut[r.getX()][r.getY() + 1].onkoLaiva()) {
+                return false;
+            }
+        } else if ((r.getX() < 9 && r.getX() > 0) && (r.getY() < 9 && r.getY() > 0)) {
+            if (ruudut[r.getX() - 1][r.getY()].onkoLaiva() || ruudut[r.getX() + 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() + 1].onkoLaiva() || ruudut[r.getX()][r.getY() - 1].onkoLaiva()) {
+                return false;
+            }
+
+        } else if ((r.getX() < 9 && r.getX() > 0) && r.getY() == 0) {
+            if (ruudut[r.getX() - 1][r.getY()].onkoLaiva() || ruudut[r.getX() + 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() + 1].onkoLaiva()) {
+                return false;
+            }
+        } else if ((r.getX() < 9 && r.getY() > 0) && r.getY() == 9) {
+            if (ruudut[r.getX() - 1][r.getY()].onkoLaiva() || ruudut[r.getX() + 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() - 1].onkoLaiva()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

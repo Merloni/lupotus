@@ -58,6 +58,8 @@ public class PelilautaTest {
         assertEquals(lauta.getLaivat().size(),5);
     }
     
+     
+    
     
     
 }
