@@ -47,6 +47,16 @@ public class Pelilauta {
         return true;
     }
 
+    /**
+     * Metodin tarkoituksena on laivojen lisääminen pelilaudalle manuaalisesti
+     * testaamista varten
+     *
+     * @param laiva manuaalisesti lisättävä laiva
+     */
+    public void lisaaLaivaManuaalisesti(Laiva laiva) {
+        this.laivat.add(laiva);
+    }
+
     public int getKoko() {
         return this.koko;
     }
@@ -67,6 +77,8 @@ public class Pelilauta {
         for (int i = 0; i < this.koko; i++) {
             for (int j = 0; j < this.koko; j++) {
                 Ruutu r = new Ruutu(j, i);
+                r.setAmmuttu(false);
+                r.poistaLaiva();
                 this.ruudut[j][i] = r;
             }
         }
@@ -76,9 +88,7 @@ public class Pelilauta {
      * Metodi luo viisi eri kokoista laivaa ja lisää ne pelilaudalle ennalta
      * määrättyihin koordinaatteihin.
      *
-     * Metodia ei tulla tällaisenaan käyttämään lopullisessa versiossa.
-     * Tarkoituksena poistaa toisto ja asettaa laivat sattumanvaraisille
-     * paikoille.
+     * 
      */
     public void luoLaivat() {
 
@@ -90,6 +100,7 @@ public class Pelilauta {
         luoLaiva(5);
 
     }
+    
 
     /**
      * Luodaan pelilaudan alkutilanne asettamalla kaikkien ruutujen arvot oikein

@@ -3,24 +3,22 @@ package ui;
 import Kuuntelijat.RuutuListener;
 import Kuuntelijat.LopetaListener;
 import Kuuntelijat.AloitaPeliListener;
+import Kuuntelijat.HighscoreListener;
+import Kuuntelijat.ValikkoKuuntelija;
 import PeliLogiikka.Pelilauta;
-import PeliLogiikka.Ruutu;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import javax.swing.BorderFactory;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -34,22 +32,46 @@ public class UI implements Runnable {
 
     private JFrame frame;
     private Container c;
-    private Pelilauta lauta = new Pelilauta(10);
-    private JPanel peliPaneeli = new JPanel();
-    private JPanel konePaneeli = new JPanel();
+    private final Pelilauta lauta = new Pelilauta(10);
+    private final JPanel peliPaneeli = new JPanel();
+    private final JPanel highscore = new JPanel();
+    private int vuoro = 0;
+    private ArrayList<JButton> napit = new ArrayList();
 
     public JFrame getFrame() {
         return this.frame;
     }
-
+    
     public void luoPeli() {
-
+               
+        lauta.luoLaivat();
+        System.out.println(lauta.getLaivat());
         peliPaneeli.setLayout(new BorderLayout());
         peliPaneeli.add(luoSivupalkki(), BorderLayout.WEST);
         peliPaneeli.add(luoPeliPainikkeet(), BorderLayout.CENTER);
         peliPaneeli.add(luoYlapalkki(), BorderLayout.NORTH);
+        peliPaneeli.add(luoVuoronSeuraaja(), BorderLayout.EAST);
+        peliPaneeli.add(luoKeskeytysNappi(), BorderLayout.SOUTH);
+        
 
         muutaTilaa(peliPaneeli);
+
+    }
+    public Pelilauta getLauta(){
+        return this.lauta;
+    }
+    public ArrayList<JButton> getNapit(){
+        return this.napit;
+    }
+
+    public void luoHighscore() {
+
+        highscore.setLayout(new BorderLayout());
+
+        highscore.add(luoHighscoreOtsikko(), BorderLayout.NORTH);
+        highscore.add(luoHighscoreNapit(), BorderLayout.SOUTH);
+
+        muutaTilaa(highscore);
 
     }
 
@@ -64,6 +86,7 @@ public class UI implements Runnable {
     }
 
     public JPanel luoPeliPainikkeet() {
+        
         JPanel painikkeet = new JPanel();
         painikkeet.setLayout(new GridLayout(10, 10));
         for (int i = 0; i < lauta.getKoko(); i++) {
@@ -71,6 +94,7 @@ public class UI implements Runnable {
 
                 JButton nappi = new JButton("" + lauta.getRuudut()[j][i].getMerkki());
                 nappi.addActionListener(new RuutuListener(lauta.getRuudut()[j][i], this, lauta, nappi));
+                napit.add(nappi);
 
                 painikkeet.add(nappi);
             }
@@ -91,6 +115,25 @@ public class UI implements Runnable {
         return ylaPaneeli;
     }
 
+    public JPanel luoVuoronSeuraaja() {
+        JPanel sivuPaneeli = new JPanel();
+        sivuPaneeli.setLayout(new BorderLayout());
+        sivuPaneeli.add(new JLabel("" + this.vuoro));
+
+        return sivuPaneeli;
+    }
+    public void kasvataVuoroa(){
+        this.vuoro++;
+    }
+    public JPanel luoKeskeytysNappi() {
+        JPanel paneeli = new JPanel();
+        JButton nappi = new JButton("Keskeytä peli");
+        nappi.addActionListener(new ValikkoKuuntelija(this));
+        paneeli.add(nappi);
+
+        return paneeli;
+    }
+
     public JPanel luoSivupalkki() {
         JPanel sivuPaneeli = new JPanel();
         sivuPaneeli.setLayout(new GridLayout(10, 0));
@@ -103,23 +146,56 @@ public class UI implements Runnable {
 
     public JPanel luoValikko() {
 
-        JButton aloitus = new JButton("Aloita Peli");
-        JButton lopetus = new JButton("Lopeta");
-
-        aloitus.addActionListener(new AloitaPeliListener(this));
-        lopetus.addActionListener(new LopetaListener());
         JPanel paneeli = new JPanel();
-
         paneeli.setLayout(new BorderLayout());
-        paneeli.add(aloitus, BorderLayout.CENTER);
-        paneeli.add(lopetus, BorderLayout.SOUTH);
+        paneeli.add(luoValikkoNapit(), BorderLayout.NORTH);
+
+        muutaTilaa(paneeli);
         return paneeli;
 
     }
 
+    public JPanel luoValikkoNapit() {
+        JPanel paneeli = new JPanel();
+        JButton aloitus = new JButton("Aloita Peli");
+        JButton tulos = new JButton("Highscore");
+        JButton lopetus = new JButton("Lopeta");
+
+        aloitus.addActionListener(new AloitaPeliListener(this));
+        tulos.addActionListener(new HighscoreListener(this));
+        lopetus.addActionListener(new LopetaListener());
+        paneeli.setLayout(new BorderLayout());
+        paneeli.add(aloitus, BorderLayout.NORTH);
+        paneeli.add(tulos, BorderLayout.CENTER);
+        paneeli.add(lopetus, BorderLayout.SOUTH);
+
+        return paneeli;
+
+    }
+
+    public JPanel luoHighscoreOtsikko() {
+        JPanel otsikkoPaneeli = new JPanel();
+        otsikkoPaneeli.setLayout(new BorderLayout());
+        JLabel otsikko = new JLabel("Highscore:");
+        otsikkoPaneeli.add(otsikko, BorderLayout.NORTH);
+
+        return otsikkoPaneeli;
+
+    }
+
+    public JPanel luoHighscoreNapit() {
+        JPanel highscoreNapit = new JPanel();
+        highscoreNapit.setLayout(new BorderLayout());
+        JButton ok = new JButton("Palaa");
+        ok.addActionListener(new ValikkoKuuntelija(this));
+        highscoreNapit.add(ok);
+
+        return highscoreNapit;
+    }
+
     @Override
     public void run() {
-        lauta.luoPeliTilanne();
+        lauta.alustaRuudut();
 
         frame = new JFrame("Laivanupotus");
         frame.setPreferredSize(new Dimension(800, 700));

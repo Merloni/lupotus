@@ -1,6 +1,6 @@
 #Aihe: 
 ##Laivanupotuspeli. 
-Pelin tarkoituksena on saada vastustajan laivat tuhottua. Molemmilla pelaajilla on tietty m√§√§r√§ erikokoisia laivoja. Joko vuoropohjainen kaksinpeli tai todenn√§k√∂isemmin konetta vastaan, jolloin kone ampuu sattumanvaraisesti. Pelaajat ampuvat vuorotellen yhteen koordinaattiin taulukossa. Mik√§li koordinaatissa on vastapelaajan laiva, kyseinen laiva tai siin√§ koordinaatissa oleva osa tuhoutuu. 
+Pelin tarkoituksena on saada tietokoneen laivat tuhottua n‰kem‰tt‰ miss‰ ne ovat. Kone ei saa laittaa laivoja vierekk‰in, mutta kulmittain olevat laivat on sallittu. Pelaaja ampuu yksi kerrallaan tiettyyn koordinaattiin taulukossa. Mik√§li koordinaatissa on vastapelaajan laivan osa, kyseinen osa(tai koko laiva, mik‰li osa oli laivan viimeinen ehj‰ osa) tuhoutuu. 
 
 ##K√§ytt√§j√§t:
 
@@ -10,7 +10,7 @@ Pelaaja
 
 ###Pelin aloitus:
 
-Pelaaja valitsee aloitusvalikosta uuden pelin. Pelaaja valitsee laivojen m√§√§r√§n ja peli alkaa.
+Pelaaja valitsee aloitusvalikosta uuden pelin. Peli alkaa.
 
 ###Pelin Pelaaminen:
 
@@ -18,4 +18,4 @@ Pelaaja valitsee kohdan taulukosta johon h√§n ampuu.
 
 ###Pelin lopetus:
 
-Kun jomman kumman pelaajan kaikki laivat ovat tuhoutuneet tai kun pelaaja keskeytt√§√§ pelin manuaalisesti.
+Kun pelaaja on saanut tietokoneen kaikki laivat ammuttua tulee ilmoitus pelin p‰‰ttymisest‰ ja k‰ytettyjen laukausten m‰‰r‰st‰.

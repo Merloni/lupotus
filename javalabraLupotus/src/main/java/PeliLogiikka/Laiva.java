@@ -55,10 +55,11 @@ public class Laiva {
     public String toString() {
         String s = "Kaikki laivan osien koordinaatit: ";
         for (int i = 0; i < osat.size(); i++) {
-            s += "(" + osat.get(i).getX() + ", " + osat.get(i).getY() + ") ";
+            s += "(" + osat.get(i).getX() + ", " + osat.get(i).getY() + ") " + osat.get(i).getAmmuttu() + " ";
 
         }
-        return s + onkoUponnut();
+        s += ", onko laiva uponnut ";
+        return s + onkoUponnut() + "\n";
     }
 
     /**

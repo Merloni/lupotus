@@ -21,6 +21,7 @@ public class RuutuListener implements ActionListener {
     private UI ui;
     private Pelilauta lauta;
     private JButton button;
+    
 
     /**
      *
@@ -57,7 +58,7 @@ public class RuutuListener implements ActionListener {
     }
 
     /**
-     * Mikäli klikattussa ruudussa ei ole, laivaa kutsutaan tämä metodi.
+     * Mikäli klikattussa ruudussa ei ole laivaa, kutsutaan tämä metodi.
      */
     public void eiOsumaa() {
         char aakkoset[] = "ABCDEFGHIJ".toCharArray();
@@ -72,22 +73,19 @@ public class RuutuListener implements ActionListener {
      * Mikäli klikatussa ruudussa on laiva, kutsutaan tämä metodi.
      */
     public void osuma() {
+        ui.kasvataVuoroa();
         char aakkoset[] = "ABCDEFGHIJ".toCharArray();
         String teksti = "Ammuit ruutuun " + Character.toString(aakkoset[ruutu.getX()]) + ruutu.getY();
         lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
         lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('X');
         this.button.setLabel("X");
-        
+
         if (this.ruutu.getLaiva().onkoUponnut()) {
             teksti += ", osui ja upposi!";
             JOptionPane.showMessageDialog(ui.getFrame(), teksti);
             this.button.setBackground(Color.red);
-            for (int i = 0; i < lauta.getLaivat().size(); i++) {
-                System.out.println(lauta.getLaivat().get(i));
-                
-            }
             System.out.println("");
-            
+
         } else {
             teksti += ", osui!";
             JOptionPane.showMessageDialog(ui.getFrame(), teksti);
@@ -112,9 +110,18 @@ public class RuutuListener implements ActionListener {
                     "Voitit pelin!", JOptionPane.DEFAULT_OPTION);
             if (result == 0 || result == 1) {
                 ui.muutaTilaa(ui.luoValikko());
+                for (JButton b : ui.getNapit()) {
+                    b.setLabel("~");
+                    b.setBackground(new JButton().getBackground());
+                    
+                }
+                lauta.alustaRuudut();
+                lauta.getLaivat().clear();
             }
+            
         }
 
     }
+    
 
 }

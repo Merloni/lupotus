@@ -35,7 +35,11 @@ public class Ruutu {
     public void asetaLaiva(Laiva l) {
         this.onkoLaiva = true;
         this.laiva = l;
-        
+
+    }
+    public void poistaLaiva(){
+        this.onkoLaiva = false;
+        this.laiva = null;
     }
 
     /**
@@ -60,6 +64,9 @@ public class Ruutu {
 
     public boolean getAmmuttu() {
         return ampumisTilanne;
+    }
+    public void setAmmuttu(boolean arvo){
+        this.ampumisTilanne = arvo;
     }
 
     public int getX() {

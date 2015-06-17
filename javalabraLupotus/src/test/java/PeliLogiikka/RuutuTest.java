@@ -20,6 +20,7 @@ import static org.junit.Assert.*;
 public class RuutuTest {
 
     Ruutu ruutu;
+    Ruutu toinenRuutu;
     Laiva laiva;
     Pelilauta lauta;
 
@@ -37,7 +38,9 @@ public class RuutuTest {
     @Before
     public void setUp() {
         lauta = new Pelilauta(10);
+        lauta.alustaRuudut();
         ruutu = new Ruutu(1, 1);
+        toinenRuutu = new Ruutu(1, 2);
         ArrayList<Ruutu> osat = new ArrayList();
         osat.add(new Ruutu(1, 1));
         osat.add(new Ruutu(1, 2));
@@ -64,13 +67,27 @@ public class RuutuTest {
     }
 
     @Test
-    public void toStringTest() {
-        assertEquals(ruutu.toString(), "1, 1, false");
+    public void merkkiMuuttuuJosAmmutaanKunRuudussaOnLaivaTest() {
+        ruutu.asetaLaiva(laiva);
+        assertEquals(ruutu.getMerkki(), '~');
+        ruutu.ammu();
+        assertEquals(ruutu.getMerkki(), 'X');
+
     }
 
     @Test
-    public void getLaivaTest() {
-        ruutu.asetaLaiva(laiva);
-        assertEquals(ruutu.getLaiva().toString(), "Kaikki laivan osien koordinaatit: (1, 1)(1, 2)");
+    public void merkkiMuuttuuJosAmmutaanKunRuudussaEiOleLaivaaTest() {
+        assertEquals(ruutu.getMerkki(), '~');
+        ruutu.ammu();
+        assertEquals(ruutu.getMerkki(), 'O');
     }
+    @Test
+    public void toStringTest(){
+        assertEquals(ruutu.toString(),"1, 1, false");
+        toinenRuutu.ammu();
+        assertEquals(toinenRuutu.toString(),"1, 2, true");
+    }
+
+    
+
 }

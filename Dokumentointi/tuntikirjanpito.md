@@ -65,7 +65,7 @@ Uin alottelua
 - 15.00-17.00
 - 19.30-20.30
 
-Javadoc, Ui säätö, testejä paremmaks, luokkamuokkauksia.
+Javadoc, Ui säätö, testejä paremmaksi, luokkamuokkauksia.
 
 Sekvenssikaaviot, pitreportti
 
@@ -88,3 +88,10 @@ UI
 - 14.30-17.00
 
 UI
+
+#KE 17.6.2015
+
+- 14.00-19.00
+- 22.00-24.00
+
+Toiminnallisuuden-, javadocin- ja ui:n viimeistelyä
