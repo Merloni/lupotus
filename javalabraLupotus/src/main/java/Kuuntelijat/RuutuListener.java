@@ -37,6 +37,7 @@ public class RuutuListener implements ActionListener {
         this.ui = ui;
         this.lauta = lauta;
         this.button = button;
+
     }
 
     @Override
@@ -45,13 +46,11 @@ public class RuutuListener implements ActionListener {
         if (lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].getAmmuttu()) {
             JOptionPane.showMessageDialog(ui.getFrame(), "Ruutuun on jo ammuttu, yritä uudestaan.");
         } else if (!lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].onkoLaiva()) {
-
+            ui.kasvataVuoroa();
             eiOsumaa();
-
         } else {
-
+            ui.kasvataVuoroa();
             osuma();
-
         }
 
     }
@@ -63,7 +62,6 @@ public class RuutuListener implements ActionListener {
         char aakkoset[] = "ABCDEFGHIJ".toCharArray();
         //JOptionPane.showMessageDialog(ui.getFrame(), "Ammuit ruutuun " + Character.toString(aakkoset[ruutu.getX()]) + ruutu.getY() + ", ei osumaa.");
         lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
-        //  lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('O');
         this.button.setLabel("O");
 
     }
@@ -72,7 +70,6 @@ public class RuutuListener implements ActionListener {
      * Mikäli klikatussa ruudussa on laiva, kutsutaan tämä metodi.
      */
     public void osuma() {
-        ui.kasvataVuoroa();
         char aakkoset[] = "ABCDEFGHIJ".toCharArray();
         String teksti = "Ammuit ruutuun " + Character.toString(aakkoset[ruutu.getX()]) + ruutu.getY();
         lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
@@ -83,7 +80,6 @@ public class RuutuListener implements ActionListener {
             teksti += ", osui ja upposi!";
             JOptionPane.showMessageDialog(ui.getFrame(), teksti);
             this.button.setBackground(Color.red);
-            System.out.println("");
 
         } else {
             teksti += ", osui!";
@@ -105,10 +101,13 @@ public class RuutuListener implements ActionListener {
                 Thread.currentThread().interrupt();
             }
             int result = JOptionPane.showConfirmDialog(ui.getFrame(),
-                    "Onneksi olkoon, voitit pelin!",
+                    "Onneksi olkoon " + ui.getNimi() + ", voitit pelin käyttäen " + ui.getVuoro() + " siirtoa!",
                     "Voitit pelin!", JOptionPane.DEFAULT_OPTION);
+
             if (result == 0 || result == 1) {
                 ui.muutaTilaa(ui.luoValikko());
+                System.out.println(ui.getNimi() + ui.getVuoro());
+                ui.kirjaaHighscoreen();
                 for (JButton b : ui.getNapit()) {
                     b.setLabel("~");
                     b.setBackground(new JButton().getBackground());

@@ -95,3 +95,10 @@ UI
 - 22.00-24.00
 
 Toiminnallisuuden-, javadocin- ja ui:n viimeistelyä
+
+##TO 18.6.2015
+
+- 12.00-13.30
+- 14.00-16.00
+
+UI, Testejä, toiminnallisuutta.
