@@ -22,11 +22,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * TÃ¤mÃ¤ luokka hoitaa valikon ja pelitilanteen piirtÃ¤misen, sekÃ¤
- * pelitilanteen graafisen ulkoasun pÃ¤ivittÃ¤misen.
  *
- *
- * @author Tuomo
+ * @author tuosalme
  */
 public class UI implements Runnable {
 
@@ -35,7 +32,7 @@ public class UI implements Runnable {
     private final Pelilauta lauta = new Pelilauta(10);
     private final JPanel peliPaneeli = new JPanel();
     private final JPanel highscore = new JPanel();
-    private int vuoro = 0;
+    private int vuoro;
     private String nimi = "";
     private ArrayList<JButton> napit = new ArrayList();
     private TiedostoKasittelija tk = new TiedostoKasittelija();
@@ -44,6 +41,15 @@ public class UI implements Runnable {
         return this.frame;
     }
 
+    /**
+     * Metodi alustaa vuoromäärän nollaksi. Sen jälkeen kutsutaan lauta-luokan
+     * luoPeliTilanne-metodia joka alustaa laudan ruudut ja luo siihen laivat.
+     * Sen jälkeen luodaan JPanel jolla on tarvittavat komponentit.
+     * 
+     * 
+     * 
+     * 
+     */
     public void luoPeli() {
 
         this.vuoro = 0;
@@ -76,6 +82,11 @@ public class UI implements Runnable {
         return this.napit;
     }
 
+    /**
+     * Luo Highscore näkymän, jossa on otsikko, lista parhaista suorituksista
+     * sekä valikkoon palaamisnappi.
+     *
+     */
     public void luoHighscore() {
 
         highscore.setLayout(new BorderLayout());
@@ -83,13 +94,18 @@ public class UI implements Runnable {
         highscore.add(luoHighscoreOtsikko(), BorderLayout.NORTH);
         highscore.add(luoHighscoreLista(), BorderLayout.CENTER);
         highscore.add(luoHighscoreNapit(), BorderLayout.SOUTH);
-        highscore.setBackground(Color.yellow);
         c.setBackground(highscore.getBackground());
 
         muutaTilaa(highscore);
 
     }
 
+    /**
+     * Metodi luo JPanel-olion, jonka sisältöne on kymmenen parasta suoritusta
+     * aikaisemmilta pelikerroilta.
+     *
+     * @return palauttaa JPanel-olion jossa top10 highscore
+     */
     public JPanel luoHighscoreLista() {
         JPanel paneeli = new JPanel();
         paneeli.setLayout(new BorderLayout());
@@ -98,6 +114,14 @@ public class UI implements Runnable {
         return paneeli;
     }
 
+    /**
+     * Metodi poistaa kaikki komponentit Framen Container-oliolta ja asettaa
+     * sinne sitten parametrinä saatavan JPanel olion. Metodi asettaa ruudun
+     * yläreunaan tyhjän paneelin estettiisen tyydyttävyyden vuoksi.
+     *
+     *
+     * @param panel JPanel olio, joka piirretään näkyville.
+     */
     public void muutaTilaa(JPanel panel) {
         JPanel haamuPaneeli = new JPanel();
         haamuPaneeli.setPreferredSize(new Dimension(0, 500));
@@ -111,6 +135,13 @@ public class UI implements Runnable {
         frame.pack();
     }
 
+    /**
+     * Luo JPanel-olion jonka sisällä on 10x10 taulukko. Taulukkoon asetetaan
+     * tarvittava määrä JButton-olioita, joille annetaan tapahtumankuuntelia.
+     * Jokaisen JButtonin kuvake saadaan sitä vastaavalta ruutu-oliolta.
+     *
+     * @return palauttaa JPanel-olion jossa 10x10taulukko JButtoneita.
+     */
     public JPanel luoPeliPainikkeet() {
 
         JPanel painikkeet = new JPanel();
@@ -120,7 +151,7 @@ public class UI implements Runnable {
 
                 JButton nappi = new JButton("" + lauta.getRuudut()[j][i].getMerkki());
                 nappi.addActionListener(new RuutuListener(lauta.getRuudut()[j][i], this, lauta, nappi));
-                nappi.setPreferredSize(new Dimension(43, 26));
+                nappi.setPreferredSize(new Dimension(48, 29));
                 napit.add(nappi);
 
                 painikkeet.add(nappi);
@@ -131,6 +162,12 @@ public class UI implements Runnable {
         return painikkeet;
     }
 
+    /**
+     * Luo pelinäkymään yläpalkin jossa ovat ruutujen x-akselin koordinaatit
+     * muutettuina aakkosten ensimmäisiksi kymmeneksi kirjaimeksi.
+     *
+     * @return palauttaa JPanel-olion jossa aakkoset A-J allekkain.
+     */
     public JPanel luoYlapalkki() {
         JPanel ylaPaneeli = new JPanel();
         ylaPaneeli.setLayout(new GridLayout(1, 10));
@@ -143,17 +180,29 @@ public class UI implements Runnable {
     }
 
     public JPanel luoVuoronSeuraaja() {
-        JPanel sivuPaneeli = new JPanel();
-        sivuPaneeli.setLayout(new BorderLayout());
-        sivuPaneeli.add(new JLabel("" + this.vuoro));
+        JPanel vuoroPaneeli = new JPanel();
+        vuoroPaneeli.setLayout(new BorderLayout());
+        vuoroPaneeli.add(new JLabel("" + this.vuoro));
 
-        return sivuPaneeli;
+        return vuoroPaneeli;
     }
 
+    /**
+     * Metodi jota kutsutaan jokaisen kelvollisen laukauksen jälkeen. Kasvattaa
+     * vuoro-attribuutin arvoa jokaisella kutsumiskerralla.
+     */
     public void kasvataVuoroa() {
         this.vuoro++;
     }
 
+    /**
+     *
+     * Luo paneelin ja asettaa siihen JButtonin johon lisätään
+     * tapahtumankuuntelija. Tapahtumankuuntelija keskeyttää pelin ja palauttaa
+     * pelaajan takaisin valikkoon.
+     *
+     * @return JPanel-olio jossa JButton-olio tapahtumakuuntelijalla.
+     */
     public JPanel luoLopetusNappi() {
         JPanel paneeli = new JPanel();
         JButton lopetus = new JButton("Lopeta peli");
@@ -164,6 +213,11 @@ public class UI implements Runnable {
         return paneeli;
     }
 
+    /**
+     * Asettaa numerot 0-9 pelilaudan sivuun näyttämään koordinaatiston kohtia.
+     *
+     * @return JPanel-olio jossa pelitilanteen sivupalkki.
+     */
     public JPanel luoSivupalkki() {
         JPanel sivuPaneeli = new JPanel();
         sivuPaneeli.setLayout(new GridLayout(10, 0));
@@ -174,16 +228,21 @@ public class UI implements Runnable {
         return sivuPaneeli;
     }
 
+    /**
+     * Luo valikon JPanel-olion ja otsikon tiettyihin paikkoihin ja asettaa
+     * taustavärin sekä muuttaa otsikon kokoa.
+     *
+     * @return palauttaa JPanel-olion jossa valikon näkymä.
+     */
     public JPanel luoValikko() {
-        
+
         JPanel paneeli = new JPanel();
         JLabel otsikko = new JLabel("Lupotus!");
-        otsikko.setFont(new Font("Comic Sans", Font.PLAIN,100));
-        paneeli.setLayout(new BorderLayout());   
-        paneeli.add(otsikko,BorderLayout.NORTH);   
+        otsikko.setFont(new Font("Comic Sans", Font.PLAIN, 100));
+        paneeli.setLayout(new BorderLayout());
+        paneeli.add(otsikko, BorderLayout.NORTH);
         paneeli.add(luoValikkoNapit(), BorderLayout.CENTER);
-        
-        
+
         paneeli.setBackground(Color.pink);
         c.setBackground(paneeli.getBackground());
         muutaTilaa(paneeli);
@@ -191,6 +250,11 @@ public class UI implements Runnable {
 
     }
 
+    /**
+     * Luo valikkonäkymään napit ja antaa niille tapahtumankuuntelijat.
+     *
+     * @return JPanel-olio jossa kolme JButton-oliota tapahtumankuuntelijoineen.
+     */
     public JPanel luoValikkoNapit() {
         JPanel paneeli = new JPanel();
         JButton aloitus = new JButton("Aloita Peli");
@@ -209,26 +273,41 @@ public class UI implements Runnable {
 
     }
 
+    /**
+     *
+     * @return Palauttaa JPanel-olion joka luo highscorenäkymään otsikon.
+     */
     public JPanel luoHighscoreOtsikko() {
         JPanel otsikkoPaneeli = new JPanel();
         otsikkoPaneeli.setLayout(new BorderLayout());
         JLabel otsikko = new JLabel("Highscore:");
+        otsikko.setFont(new Font("Comic Sans", Font.PLAIN, 80));
         otsikkoPaneeli.add(otsikko, BorderLayout.NORTH);
 
         return otsikkoPaneeli;
 
     }
 
+    /**
+     *
+     *
+     * @return JPanel-olio jossa on takaisin valikkoon viemä JButton-olio.
+     */
     public JPanel luoHighscoreNapit() {
         JPanel highscoreNapit = new JPanel();
         highscoreNapit.setLayout(new BorderLayout());
         JButton ok = new JButton("Palaa");
         ok.addActionListener(new ValikkoListener(this));
-        highscoreNapit.add(ok);
+        highscoreNapit.add(ok, BorderLayout.CENTER);
 
         return highscoreNapit;
     }
 
+    /**
+     * Tapahtumankuuntelija kutsuu metodia pelin päättyessä. Se tallettaa
+     * pelaajan antaman nimen sekä käytettyjen vuorojen määrän highscore
+     * listaukseen.
+     */
     public void kirjaaHighscoreen() {
         tk.lisaaTiedostoon(nimi, vuoro);
     }

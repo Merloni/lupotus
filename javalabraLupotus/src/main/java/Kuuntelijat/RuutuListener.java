@@ -12,6 +12,10 @@ import javax.swing.JTextField;
 import ui.UI;
 
 /**
+ * Luokka toimii kuuntelijana kaikille pelissä oleville napeille. Mikäli
+ * klikatun napin koordinaateissa on laiva, muuttaa luokka sen tilaa ammutuksi
+ * ja kyseisen osan laivasta myös ammutuksi. Luokka piirtää ruudulle myös tiedot
+ * pelin voittamisesta sekä mahdollisista osumista.
  *
  * @author Tuomo
  */

@@ -7,7 +7,7 @@ import javax.swing.JButton;
  * Luokan ominaisuuksiin kuuluu tieto omasta sijainnista x- ja y-koordinaattien
  * avulla, tieto siitä onko ruutuun ammuttu vai ei ja onko ruudussa laiva.
  *
- * Ruutu toimii myös guihin piirretävänä JButton olentona.
+ *
  *
  * @author tuosalme
  */
@@ -20,6 +20,11 @@ public class Ruutu {
     private Laiva laiva;
     private char merkki = '~';
 
+    /**
+     *
+     * @param x ruudun parametrina saatava x-koordinaatti
+     * @param y ruudun parametrina saatava y-koordinaatti
+     */
     public Ruutu(int x, int y) {
         this.x = x;
         this.y = y;
@@ -38,6 +43,9 @@ public class Ruutu {
 
     }
 
+    /**
+     * Asettaa ruudun laivan nulliksi sekä muuttaa laivatilanteen epätodeksi.
+     */
     public void poistaLaiva() {
         this.onkoLaiva = false;
         this.laiva = null;
@@ -51,10 +59,10 @@ public class Ruutu {
     public void ammu() {
         this.ampumisTilanne = true;
         if (this.onkoLaiva) {
-            muutaMerkkia('X');
+            setMerkki('X');
         } else {
 
-            muutaMerkkia('O');
+            setMerkki('O');
         }
 
     }
@@ -87,12 +95,16 @@ public class Ruutu {
         this.y = y;
     }
 
+    /**
+     * Tarkistaa onko ruudussa laiva.
+     *
+     * @return palauttaa totuusarvon siitä onko ruudussa laiva vai ei
+     */
     public boolean onkoLaiva() {
         return this.onkoLaiva;
     }
 
-    public void muutaMerkkia(char c) {
-
+    public void setMerkki(char c) {
         this.merkki = c;
     }
 

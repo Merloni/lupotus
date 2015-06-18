@@ -70,7 +70,9 @@ public class Pelilauta {
     }
 
     /**
-     * Alustaa jokaisen ruudun koordinaatit oikein.
+     * Alustaa jokaisen ruudun koordinaatit oikein. Jotta vanhojen pelien tiedot
+     * eivät rikkoisi peliä, metodi asettaa myös jokaisen ruudun ammuttu
+     * tilanteeksi false, ja poistaa mahdolliset laivat ruuduista.
      *
      */
     public void alustaRuudut() {
@@ -85,8 +87,7 @@ public class Pelilauta {
     }
 
     /**
-     * Metodi luo viisi eri kokoista laivaa ja lisää ne pelilaudalle ennalta
-     * määrättyihin koordinaatteihin.
+     * Metodi luo viisi eri kokoista laivaa ja lisää ne pelilaudalle.
      *
      *
      */
@@ -103,7 +104,8 @@ public class Pelilauta {
 
     /**
      * Luodaan pelilaudan alkutilanne asettamalla kaikkien ruutujen arvot oikein
-     * sekä luomalla laivat.
+     * sekä luomalla laivat. Metodi myös tyhjentää laivalistan, jotta edellisten
+     * pelien laivat eivät jäisi muistiin.
      */
     public void luoPeliTilanne() {
 
@@ -175,6 +177,16 @@ public class Pelilauta {
         return laiva;
     }
 
+    /**
+     *
+     * Metodin tehtävän on tarkistaa uuden laivan luontia varten ruutujen
+     * kelpoisuus laivan sijoittamista varten.
+     *
+     * @param r parametrina saatu ruutu jonka vaaka- ja pystysuunnassa (mikäli
+     * mahdollista) olevat viereiset ruudut tarkistetaan muiden laivojen
+     * varalta. Mikäli muita laivoja löytyy palautetaan false.
+     * @return palautetaan totuusarvo siitä voiko ruutuun asettaa laivan vai ei.
+     */
     public boolean tarkistaOnkoRuutuSallittu(Ruutu r) {
 
         if (ruudut[r.getX()][r.getY()].onkoLaiva()) {

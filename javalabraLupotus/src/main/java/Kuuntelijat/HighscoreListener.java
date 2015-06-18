@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import ui.UI;
 
 /**
+ * Luokka on "Highscore"-JButton olioon lisättävä tapahtumankuuntelija joka
+ * muuttaa näkymän valikosta highscoreen.
  *
  * @author Tuomo
  */
@@ -17,6 +19,11 @@ public class HighscoreListener implements ActionListener {
 
     private UI ui;
 
+    /**
+     *
+     * @param ui parametrinä saatava ui-olio joka mahdollistaa pääsyn highscoren
+     * luomiseen.
+     */
     public HighscoreListener(UI ui) {
         this.ui = ui;
     }

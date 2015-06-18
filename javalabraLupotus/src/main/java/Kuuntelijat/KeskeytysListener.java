@@ -11,13 +11,22 @@ import javax.swing.JButton;
 import ui.UI;
 
 /**
+ * Luokka on pelin keskeytystä varten luotu tapahtumankuuntelija joka
+ * kiinnitetään pelin ollessa käynnissä ilmestyvään "Keskeytä peli"- JButtoniin.
+ * Valikkonäkymän luomisen lisäksi se muuttaa kaikkien pelitilassa olevien
+ * nappien ulkoasun takaisin alkutilaan.
  *
- * @author Tuomo
+ * @author tuosalme
  */
 public class KeskeytysListener implements ActionListener {
 
     private UI ui;
 
+    /**
+     *
+     * @param ui parametrinä saatava ui-olio mahdollistaa pääsyn valikkotilan
+     * luomiseen sekä nappien muuttamiseen takaisin oikeanlaiseen ulkoasuun.
+     */
     public KeskeytysListener(UI ui) {
         this.ui = ui;
     }
