@@ -21,7 +21,6 @@ public class RuutuListener implements ActionListener {
     private UI ui;
     private Pelilauta lauta;
     private JButton button;
-    
 
     /**
      *
@@ -43,9 +42,9 @@ public class RuutuListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (this.ruutu.getAmmuttu()) {
+        if (lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].getAmmuttu()) {
             JOptionPane.showMessageDialog(ui.getFrame(), "Ruutuun on jo ammuttu, yritä uudestaan.");
-        } else if (!this.ruutu.onkoLaiva()) {
+        } else if (!lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].onkoLaiva()) {
 
             eiOsumaa();
 
@@ -62,9 +61,9 @@ public class RuutuListener implements ActionListener {
      */
     public void eiOsumaa() {
         char aakkoset[] = "ABCDEFGHIJ".toCharArray();
-        JOptionPane.showMessageDialog(ui.getFrame(), "Ammuit ruutuun " + Character.toString(aakkoset[ruutu.getX()]) + ruutu.getY() + ", ei osumaa.");
+        //JOptionPane.showMessageDialog(ui.getFrame(), "Ammuit ruutuun " + Character.toString(aakkoset[ruutu.getX()]) + ruutu.getY() + ", ei osumaa.");
         lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
-        lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('O');
+        //  lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('O');
         this.button.setLabel("O");
 
     }
@@ -77,10 +76,10 @@ public class RuutuListener implements ActionListener {
         char aakkoset[] = "ABCDEFGHIJ".toCharArray();
         String teksti = "Ammuit ruutuun " + Character.toString(aakkoset[ruutu.getX()]) + ruutu.getY();
         lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].ammu();
-        lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('X');
+        // lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].muutaMerkkia('X');
         this.button.setLabel("X");
 
-        if (this.ruutu.getLaiva().onkoUponnut()) {
+        if (lauta.getRuudut()[this.ruutu.getX()][this.ruutu.getY()].getLaiva().onkoUponnut()) {
             teksti += ", osui ja upposi!";
             JOptionPane.showMessageDialog(ui.getFrame(), teksti);
             this.button.setBackground(Color.red);
@@ -113,15 +112,13 @@ public class RuutuListener implements ActionListener {
                 for (JButton b : ui.getNapit()) {
                     b.setLabel("~");
                     b.setBackground(new JButton().getBackground());
-                    
+
                 }
-                lauta.alustaRuudut();
-                lauta.getLaivat().clear();
+
             }
-            
+
         }
 
     }
-    
 
 }

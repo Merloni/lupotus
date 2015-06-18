@@ -88,7 +88,7 @@ public class Pelilauta {
      * Metodi luo viisi eri kokoista laivaa ja lisää ne pelilaudalle ennalta
      * määrättyihin koordinaatteihin.
      *
-     * 
+     *
      */
     public void luoLaivat() {
 
@@ -100,14 +100,20 @@ public class Pelilauta {
         luoLaiva(5);
 
     }
-    
 
     /**
      * Luodaan pelilaudan alkutilanne asettamalla kaikkien ruutujen arvot oikein
      * sekä luomalla laivat.
      */
     public void luoPeliTilanne() {
+
         this.alustaRuudut();
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                this.ruudut[j][i].poistaLaiva();
+            }
+        }
+        this.laivat.clear();
         this.luoLaivat();
 
     }

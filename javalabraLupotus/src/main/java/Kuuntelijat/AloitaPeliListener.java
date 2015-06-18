@@ -21,9 +21,9 @@ public class AloitaPeliListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         ui.luoPeli();
-        
+
     }
 
 }

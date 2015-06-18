@@ -7,23 +7,29 @@ package Kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import ui.UI;
 
 /**
  *
  * @author Tuomo
  */
-public class HighscoreListener implements ActionListener {
+public class KeskeytysListener implements ActionListener {
 
     private UI ui;
 
-    public HighscoreListener(UI ui) {
+    public KeskeytysListener(UI ui) {
         this.ui = ui;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ui.luoHighscore();
+        ui.muutaTilaa(ui.luoValikko());
+        for (JButton b : ui.getNapit()) {
+            b.setLabel("~");
+            b.setBackground(new JButton().getBackground());
+
+        }
     }
 
 }

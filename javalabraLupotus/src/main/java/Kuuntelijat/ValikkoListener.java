@@ -13,18 +13,18 @@ import ui.UI;
  *
  * @author Tuomo
  */
-public class ValikkoKuuntelija implements ActionListener {
+public class ValikkoListener implements ActionListener {
 
-    
     private UI ui;
-    
-    public ValikkoKuuntelija(UI ui){
+
+    public ValikkoListener(UI ui) {
         this.ui = ui;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         ui.luoValikko();
-        
+
     }
-    
+
 }

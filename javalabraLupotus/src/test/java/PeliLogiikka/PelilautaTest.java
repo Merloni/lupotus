@@ -50,8 +50,6 @@ public class PelilautaTest {
         osat.add(new Ruutu(5, 5));
         osat.add(new Ruutu(5, 6));
         laiva2 = new Laiva(osat, lauta);
-        lauta.lisaaLaivaManuaalisesti(laiva);
-        lauta.lisaaLaivaManuaalisesti(laiva2);
 
     }
 
@@ -71,10 +69,12 @@ public class PelilautaTest {
     @Test
     public void onkoKaikkiUponneet() {
         lauta.alustaRuudut();
-        assertEquals(lauta.onkoKaikkiUponneet(), false);
+        assertEquals(lauta.onkoKaikkiUponneet(), true);
+        lauta.lisaaLaivaManuaalisesti(laiva);
+        lauta.lisaaLaivaManuaalisesti(laiva2);
         lauta.getRuudut()[1][1].ammu();
         lauta.getRuudut()[1][2].ammu();
-        assertEquals(laiva.onkoUponnut(), true);
+        assertEquals(lauta.onkoKaikkiUponneet(), false);
         lauta.getRuudut()[5][5].ammu();
         lauta.getRuudut()[5][6].ammu();
         assertEquals(lauta.onkoKaikkiUponneet(), true);
@@ -88,13 +88,15 @@ public class PelilautaTest {
     @Test
     public void laivojenGettausTest() {
         lauta.alustaRuudut();
+        lauta.lisaaLaivaManuaalisesti(laiva);
+        lauta.lisaaLaivaManuaalisesti(laiva2);
         assertEquals(lauta.getLaivat().size(), 2);
     }
 
     @Test
     public void peliTilanteenLuomisTest() {
         lauta.luoPeliTilanne();
-        assertEquals(lauta.getLaivat().size(), 8);
+        assertEquals(lauta.getLaivat().size(), 6);
         lauta.getRuudut()[2][2].ammu();
         assertEquals(lauta.getRuudut()[2][2].getAmmuttu(), true);
     }
