@@ -62,5 +62,4 @@ public class Laiva {
         return s + onkoUponnut();
     }
 
-
 }

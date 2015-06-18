@@ -57,9 +57,10 @@ public class LaivaTest {
     public void getOsatTest() {
         assertEquals(laiva.getOsat().size(), 2);
     }
+
     @Test
-    public void toStringTest(){
-        assertEquals(laiva.toString(),"Kaikki laivan osien koordinaatit: (1, 1) false (2, 1) false , onko laiva uponnut false");
+    public void toStringTest() {
+        assertEquals(laiva.toString(), "Kaikki laivan osien koordinaatit: (1, 1) false (2, 1) false , onko laiva uponnut false");
     }
 
 }

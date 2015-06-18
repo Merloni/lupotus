@@ -33,7 +33,7 @@ public class HighscoreListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(ui.getFrame(), "Saman pelikerran tulokset ei jostain syystä aina sillä pelikerralla tule talteen. : (");
         ui.luoHighscore();
-        
+
     }
 
 }

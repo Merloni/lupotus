@@ -57,7 +57,7 @@ public class Pelilauta {
         this.laivat.add(laiva);
         for (Ruutu r : laiva.getOsat()) {
             this.ruudut[r.getX()][r.getY()].asetaLaiva(laiva);
-            
+
         }
     }
 

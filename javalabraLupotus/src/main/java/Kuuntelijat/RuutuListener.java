@@ -105,7 +105,7 @@ public class RuutuListener implements ActionListener {
                 Thread.currentThread().interrupt();
             }
             ui.kirjaaHighscoreen();
-            
+
             int result = JOptionPane.showConfirmDialog(ui.getFrame(),
                     "Onneksi olkoon " + ui.getNimi() + ", voitit pelin käyttäen " + ui.getVuoro() + " siirtoa!",
                     "Voitit pelin!", JOptionPane.DEFAULT_OPTION);

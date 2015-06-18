@@ -18,31 +18,30 @@ import ui.UI;
  * @author Tuomo
  */
 public class TiedostoKasittelijaTest {
-    
+
     TiedostoKasittelija tk;
     UI ui;
-    
+
     public TiedostoKasittelijaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         UI ui = new UI();
         tk = new TiedostoKasittelija(ui);
     }
-    
+
     @After
     public void tearDown() {
     }
-   
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

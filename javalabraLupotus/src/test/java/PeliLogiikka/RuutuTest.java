@@ -81,13 +81,12 @@ public class RuutuTest {
         ruutu.ammu();
         assertEquals(ruutu.getMerkki(), 'O');
     }
-    @Test
-    public void toStringTest(){
-        assertEquals(ruutu.toString(),"1, 1, false");
-        toinenRuutu.ammu();
-        assertEquals(toinenRuutu.toString(),"1, 2, true");
-    }
 
-    
+    @Test
+    public void toStringTest() {
+        assertEquals(ruutu.toString(), "1, 1, false");
+        toinenRuutu.ammu();
+        assertEquals(toinenRuutu.toString(), "1, 2, true");
+    }
 
 }

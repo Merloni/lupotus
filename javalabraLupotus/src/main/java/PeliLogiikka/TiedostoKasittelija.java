@@ -101,9 +101,10 @@ public class TiedostoKasittelija {
         paneeli.add(tekstiAlue, BorderLayout.CENTER);
         return paneeli;
     }
-    public void tyhjennaHighscore() throws IOException{
+
+    public void tyhjennaHighscore() throws IOException {
         tiedostoKirjaaja = new FileWriter("Highscore.txt");
-        
+
         kirjoittaja = new PrintWriter(tiedostoKirjaaja);
         kirjoittaja.print("");
         kirjoittaja.close();

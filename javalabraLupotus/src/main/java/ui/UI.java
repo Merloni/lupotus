@@ -45,10 +45,10 @@ public class UI implements Runnable {
      * Metodi alustaa vuoromäärän nollaksi. Sen jälkeen kutsutaan lauta-luokan
      * luoPeliTilanne-metodia joka alustaa laudan ruudut ja luo siihen laivat.
      * Sen jälkeen luodaan JPanel jolla on tarvittavat komponentit.
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
      */
     public void luoPeli() {
 
@@ -111,7 +111,7 @@ public class UI implements Runnable {
         JPanel paneeli = new JPanel();
         paneeli.setLayout(new BorderLayout());
         paneeli.setPreferredSize(new Dimension(100, 100));
-        paneeli.add(tk.lueHighscore(),BorderLayout.CENTER);
+        paneeli.add(tk.lueHighscore(), BorderLayout.CENTER);
 
         return paneeli;
     }
@@ -136,9 +136,11 @@ public class UI implements Runnable {
         c.validate();
         frame.pack();
     }
-    public Container getC(){
+
+    public Container getC() {
         return this.c;
     }
+
     /**
      * Luo JPanel-olion jonka sisällä on 10x10 taulukko. Taulukkoon asetetaan
      * tarvittava määrä JButton-olioita, joille annetaan tapahtumankuuntelia.
