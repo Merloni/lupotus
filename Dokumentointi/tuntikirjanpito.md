@@ -99,6 +99,7 @@ Toiminnallisuuden-, javadocin- ja ui:n viimeistelyä
 ##TO 18.6.2015
 
 - 12.00-13.30
-- 14.00-16.00
+- 14.00-18.00
+- 19.00-23.59
 
-UI, Testejä, toiminnallisuutta.
+UI, Testejä, toiminnallisuutta, javadoc, highscore, rakennekuvaus.

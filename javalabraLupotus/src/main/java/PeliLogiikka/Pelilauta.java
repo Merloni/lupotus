@@ -55,6 +55,10 @@ public class Pelilauta {
      */
     public void lisaaLaivaManuaalisesti(Laiva laiva) {
         this.laivat.add(laiva);
+        for (Ruutu r : laiva.getOsat()) {
+            this.ruudut[r.getX()][r.getY()].asetaLaiva(laiva);
+            
+        }
     }
 
     public int getKoko() {
@@ -210,7 +214,7 @@ public class Pelilauta {
                 return false;
             }
         } else if (r.getX() == 9 && r.getY() == 0) {
-            if (ruudut[r.getX() - 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() - 1].onkoLaiva()) {
+            if (ruudut[r.getX() - 1][r.getY()].onkoLaiva() || ruudut[r.getX()][r.getY() + 1].onkoLaiva()) {
                 return false;
             }
         } else if (r.getX() == 9 && (r.getY() < 9 || r.getY() > 0)) {

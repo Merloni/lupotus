@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Laiva {
 
-    private List<Ruutu> osat = new ArrayList();
+    private ArrayList<Ruutu> osat = new ArrayList();
     private Pelilauta lauta;
     private boolean onkoUponnut = false;
 
@@ -20,7 +20,7 @@ public class Laiva {
      * @param ruudut Lista ruuduista jotka kuuluvat laivaan
      * @param lauta Pelialustana toimiva pohja
      */
-    public Laiva(List<Ruutu> ruudut, Pelilauta lauta) {
+    public Laiva(ArrayList<Ruutu> ruudut, Pelilauta lauta) {
         this.osat = ruudut;
         this.lauta = lauta;
 
@@ -47,7 +47,7 @@ public class Laiva {
         return this.onkoUponnut;
     }
 
-    public List getOsat() {
+    public ArrayList<Ruutu> getOsat() {
         return this.osat;
     }
 
@@ -59,7 +59,7 @@ public class Laiva {
 
         }
         s += ", onko laiva uponnut ";
-        return s + onkoUponnut() + "\n";
+        return s + onkoUponnut();
     }
 
 

@@ -7,6 +7,7 @@ package Kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import ui.UI;
 
 /**
@@ -30,7 +31,9 @@ public class HighscoreListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        JOptionPane.showMessageDialog(ui.getFrame(), "Saman pelikerran tulokset ei jostain syystä aina sillä pelikerralla tule talteen. : (");
         ui.luoHighscore();
+        
     }
 
 }

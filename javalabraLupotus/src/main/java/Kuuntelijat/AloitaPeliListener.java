@@ -32,12 +32,20 @@ public class AloitaPeliListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         int nimenTekoApu = 0;
+        String nimi = "";
         while (nimenTekoApu == 0) {
-            ui.setNimi(JOptionPane.showInputDialog(ui.getFrame(), "Valitse nimi; "));
-            if (ui.getNimi().length() > 0) {
-                nimenTekoApu++;
-                ui.luoPeli();
 
+            nimi = (JOptionPane.showInputDialog(ui.getFrame(), "Valitse nimi; "));
+            if (nimi.length() > 0) {
+                if (nimi.matches(".*\\d.*")) {
+                    JOptionPane.showMessageDialog(ui.getFrame(), "HUPSISTAKEIKKAA, EI NUMEROITA!");
+
+                } else {
+                    ui.setNimi(nimi);
+                    nimenTekoApu++;
+                    ui.luoPeli();
+
+                }
             }
 
         }

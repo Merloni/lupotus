@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class LaivaTest {
 
     Laiva laiva;
-    List<Ruutu> ruudut;
+    ArrayList<Ruutu> ruudut;
     Pelilauta lauta;
     Ruutu ruutu;
     Ruutu ruutu2;
@@ -57,5 +57,9 @@ public class LaivaTest {
     public void getOsatTest() {
         assertEquals(laiva.getOsat().size(), 2);
     }
-    
+    @Test
+    public void toStringTest(){
+        assertEquals(laiva.toString(),"Kaikki laivan osien koordinaatit: (1, 1) false (2, 1) false , onko laiva uponnut false");
+    }
+
 }

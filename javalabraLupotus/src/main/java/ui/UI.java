@@ -35,7 +35,7 @@ public class UI implements Runnable {
     private int vuoro;
     private String nimi = "";
     private ArrayList<JButton> napit = new ArrayList();
-    private TiedostoKasittelija tk = new TiedostoKasittelija();
+    private TiedostoKasittelija tk = new TiedostoKasittelija(this);
 
     public JFrame getFrame() {
         return this.frame;
@@ -88,12 +88,13 @@ public class UI implements Runnable {
      *
      */
     public void luoHighscore() {
+        tk.lueHighscore();
 
         highscore.setLayout(new BorderLayout());
 
         highscore.add(luoHighscoreOtsikko(), BorderLayout.NORTH);
         highscore.add(luoHighscoreLista(), BorderLayout.CENTER);
-        highscore.add(luoHighscoreNapit(), BorderLayout.SOUTH);
+        highscore.add(luoHighscoreNapit(), BorderLayout.PAGE_END);
         c.setBackground(highscore.getBackground());
 
         muutaTilaa(highscore);
@@ -110,6 +111,7 @@ public class UI implements Runnable {
         JPanel paneeli = new JPanel();
         paneeli.setLayout(new BorderLayout());
         paneeli.setPreferredSize(new Dimension(100, 100));
+        paneeli.add(tk.lueHighscore(),BorderLayout.CENTER);
 
         return paneeli;
     }
@@ -134,7 +136,9 @@ public class UI implements Runnable {
         c.validate();
         frame.pack();
     }
-
+    public Container getC(){
+        return this.c;
+    }
     /**
      * Luo JPanel-olion jonka sisällä on 10x10 taulukko. Taulukkoon asetetaan
      * tarvittava määrä JButton-olioita, joille annetaan tapahtumankuuntelia.

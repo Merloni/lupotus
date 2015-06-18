@@ -104,6 +104,8 @@ public class RuutuListener implements ActionListener {
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
+            ui.kirjaaHighscoreen();
+            
             int result = JOptionPane.showConfirmDialog(ui.getFrame(),
                     "Onneksi olkoon " + ui.getNimi() + ", voitit pelin käyttäen " + ui.getVuoro() + " siirtoa!",
                     "Voitit pelin!", JOptionPane.DEFAULT_OPTION);
@@ -111,7 +113,6 @@ public class RuutuListener implements ActionListener {
             if (result == 0 || result == 1) {
                 ui.muutaTilaa(ui.luoValikko());
                 System.out.println(ui.getNimi() + ui.getVuoro());
-                ui.kirjaaHighscoreen();
                 for (JButton b : ui.getNapit()) {
                     b.setLabel("~");
                     b.setBackground(new JButton().getBackground());
